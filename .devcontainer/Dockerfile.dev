@@ -1,0 +1,31 @@
+FROM docker.io/library/python:3.12.12-trixie
+
+ENV TZ=Europe/Budapest
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+RUN dpkg-reconfigure --frontend noninteractive tzdata
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update -y &&    \
+    apt upgrade -y &&   \
+    apt install -y      \
+    iproute2            \
+    iputils-ping        \
+    tcpdump             \
+    network-manager     \
+    iperf3              \
+    libsdl3-0           \
+    libsdl2-2.0-0       \
+    libwayland-dev      \
+    libnss3
+
+
+RUN pip install         \
+    ipykernel           \
+    pillow              \
+    cairosvg            \
+    matplotlib          \
+    pandas              \
+    numpy               \
+    pyside6             \

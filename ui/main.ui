@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1331</width>
+    <height>713</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1326</width>
+    <height>670</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1331</width>
+    <height>713</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>WifiAnalyser</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="network-wireless"/>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <layout class="QFormLayout" name="sidebar_view">
+      <property name="fieldGrowthPolicy">
+       <enum>QFormLayout::FieldGrowthPolicy::AllNonFixedFieldsGrow</enum>
+      </property>
+      <item row="0" column="0">
+       <widget class="QLabel" name="building_label">
+        <property name="text">
+         <string>Building</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="building_combo">
+        <property name="placeholderText">
+         <string>A</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>A</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>B</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0">
+       <widget class="QLabel" name="floor_label">
+        <property name="text">
+         <string>Floor</string>
+        </property>
+       </widget>
+      </item>
+      <item row="1" column="1">
+       <widget class="QComboBox" name="floor_combo">
+        <property name="placeholderText">
+         <string>1</string>
+        </property>
+        <item>
+         <property name="text">
+          <string>0</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>1</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>9</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="3" column="0">
+       <widget class="QLabel" name="interface_label">
+        <property name="text">
+         <string>Interface</string>
+        </property>
+       </widget>
+      </item>
+      <item row="3" column="1">
+       <widget class="QComboBox" name="interface_combo">
+        <property name="placeholderText">
+         <string>wlp1s0</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="0">
+       <widget class="QLabel" name="ping_target_label">
+        <property name="text">
+         <string>Ping target</string>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1">
+       <widget class="QLineEdit" name="ping_target"/>
+      </item>
+      <item row="5" column="0">
+       <widget class="QLabel" name="iperf_addr_label">
+        <property name="text">
+         <string>IPerf3 target</string>
+        </property>
+       </widget>
+      </item>
+      <item row="5" column="1">
+       <widget class="QLineEdit" name="iperf_addr"/>
+      </item>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="iperf_port"/>
+      </item>
+      <item row="6" column="0">
+       <widget class="QLabel" name="iperf_port_label">
+        <property name="text">
+         <string>IPerf3 port</string>
+        </property>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="Line" name="vertical_seperator">
+      <property name="orientation">
+       <enum>Qt::Orientation::Vertical</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QWidget" name="floor_view" native="true">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>1120</width>
+        <height>630</height>
+       </size>
+      </property>
+      <widget class="QLabel" name="floor_layout">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1120</width>
+         <height>630</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap>../d6863b01/floor_template.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>true</bool>
+       </property>
+       <property name="textInteractionFlags">
+        <set>Qt::TextInteractionFlag::NoTextInteraction</set>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl11">
+       <property name="geometry">
+        <rect>
+         <x>213</x>
+         <y>113</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl12">
+       <property name="geometry">
+        <rect>
+         <x>213</x>
+         <y>169</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl13">
+       <property name="geometry">
+        <rect>
+         <x>213</x>
+         <y>224</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl21">
+       <property name="geometry">
+        <rect>
+         <x>305</x>
+         <y>113</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl23">
+       <property name="geometry">
+        <rect>
+         <x>305</x>
+         <y>224</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl22">
+       <property name="geometry">
+        <rect>
+         <x>305</x>
+         <y>169</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl42">
+       <property name="geometry">
+        <rect>
+         <x>489</x>
+         <y>169</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl41">
+       <property name="geometry">
+        <rect>
+         <x>489</x>
+         <y>113</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl31">
+       <property name="geometry">
+        <rect>
+         <x>397</x>
+         <y>113</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl33">
+       <property name="geometry">
+        <rect>
+         <x>397</x>
+         <y>224</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl32">
+       <property name="geometry">
+        <rect>
+         <x>397</x>
+         <y>169</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fl43">
+       <property name="geometry">
+        <rect>
+         <x>489</x>
+         <y>224</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl33">
+       <property name="geometry">
+        <rect>
+         <x>777</x>
+         <y>224</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl22">
+       <property name="geometry">
+        <rect>
+         <x>685</x>
+         <y>169</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl21">
+       <property name="geometry">
+        <rect>
+         <x>685</x>
+         <y>113</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl32">
+       <property name="geometry">
+        <rect>
+         <x>777</x>
+         <y>169</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl31">
+       <property name="geometry">
+        <rect>
+         <x>777</x>
+         <y>113</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl43">
+       <property name="geometry">
+        <rect>
+         <x>869</x>
+         <y>224</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl11">
+       <property name="geometry">
+        <rect>
+         <x>593</x>
+         <y>113</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl13">
+       <property name="geometry">
+        <rect>
+         <x>593</x>
+         <y>224</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl12">
+       <property name="geometry">
+        <rect>
+         <x>593</x>
+         <y>169</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl23">
+       <property name="geometry">
+        <rect>
+         <x>685</x>
+         <y>224</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl41">
+       <property name="geometry">
+        <rect>
+         <x>869</x>
+         <y>113</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sl42">
+       <property name="geometry">
+        <rect>
+         <x>869</x>
+         <y>169</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr31">
+       <property name="geometry">
+        <rect>
+         <x>397</x>
+         <y>460</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr22">
+       <property name="geometry">
+        <rect>
+         <x>305</x>
+         <y>405</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr32">
+       <property name="geometry">
+        <rect>
+         <x>777</x>
+         <y>405</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr23">
+       <property name="geometry">
+        <rect>
+         <x>305</x>
+         <y>349</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr32">
+       <property name="geometry">
+        <rect>
+         <x>397</x>
+         <y>405</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr33">
+       <property name="geometry">
+        <rect>
+         <x>397</x>
+         <y>349</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr41">
+       <property name="geometry">
+        <rect>
+         <x>489</x>
+         <y>460</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr33">
+       <property name="geometry">
+        <rect>
+         <x>777</x>
+         <y>349</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr13">
+       <property name="geometry">
+        <rect>
+         <x>213</x>
+         <y>349</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr21">
+       <property name="geometry">
+        <rect>
+         <x>685</x>
+         <y>460</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr11">
+       <property name="geometry">
+        <rect>
+         <x>213</x>
+         <y>460</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr12">
+       <property name="geometry">
+        <rect>
+         <x>213</x>
+         <y>405</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr11">
+       <property name="geometry">
+        <rect>
+         <x>593</x>
+         <y>460</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr13">
+       <property name="geometry">
+        <rect>
+         <x>593</x>
+         <y>349</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr21">
+       <property name="geometry">
+        <rect>
+         <x>305</x>
+         <y>460</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr23">
+       <property name="geometry">
+        <rect>
+         <x>685</x>
+         <y>349</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr31">
+       <property name="geometry">
+        <rect>
+         <x>777</x>
+         <y>460</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr43">
+       <property name="geometry">
+        <rect>
+         <x>489</x>
+         <y>349</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="fr42">
+       <property name="geometry">
+        <rect>
+         <x>489</x>
+         <y>405</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr41">
+       <property name="geometry">
+        <rect>
+         <x>869</x>
+         <y>460</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr42">
+       <property name="geometry">
+        <rect>
+         <x>869</x>
+         <y>405</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr12">
+       <property name="geometry">
+        <rect>
+         <x>593</x>
+         <y>405</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr43">
+       <property name="geometry">
+        <rect>
+         <x>869</x>
+         <y>349</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="sr22">
+       <property name="geometry">
+        <rect>
+         <x>685</x>
+         <y>405</y>
+         <width>91</width>
+         <height>58</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
+      <widget class="BusySpinner" name="busy_spinner" native="true">
+       <property name="geometry">
+        <rect>
+         <x>1043</x>
+         <y>16</y>
+         <width>50</width>
+         <height>50</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>BusySpinner</class>
+   <extends>QWidget</extends>
+   <header location="global">widgets.busy_spinner.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

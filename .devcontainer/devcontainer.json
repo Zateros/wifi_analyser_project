@@ -1,0 +1,50 @@
+{
+    "name": "WiFi Analytics",
+    "build": {
+        "dockerfile": "Dockerfile.dev",
+        "options": [
+            "--format=docker"
+        ]
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,z",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "mounts": [
+        "source=/dev/dri,target=/dev/dri,type=bind",
+        "source=/dev/snd,target=/dev/snd,type=bind",
+        "source=/etc/asound.conf,target=/etc/asound.conf,type=bind",
+        "source=${localEnv:XDG_RUNTIME_DIR}/${localEnv:WAYLAND_DISPLAY},target=${localEnv:XDG_RUNTIME_DIR}/${localEnv:WAYLAND_DISPLAY},type=bind"
+    ],
+    "remoteEnv": {
+        "XDG_RUNTIME_DIR": "${localEnv:XDG_RUNTIME_DIR}",
+        "WAYLAND_DISPLAY": "${localEnv:WAYLAND_DISPLAY}"
+    },
+    "capAdd": [
+        "NET_RAW"
+    ],
+    "privileged": true,
+    "runArgs": [
+        "--volume=/etc/NetworkManager:/etc/NetworkManager",
+        "--volume=/var/run/dbus:/var/run/dbus",
+        "--network=host",
+        "--cap-add=NET_RAW",
+        "--group-add",
+        "17",
+        "--group-add",
+        "26",
+        "--group-add",
+        "303"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.black-formatter",
+                "VisualStudioExptTeam.vscodeintellicode",
+                "ms-toolsai.jupyter@2025.7.0",
+                "ms-python.vscode-pylance",
+                "ms-python.python",
+                "mechatroner.rainbow-csv",
+                "GrapeCity.gc-excelviewer"
+            ]
+        }
+    }
+}

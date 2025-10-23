@@ -1,0 +1,6 @@
+pillow
+cairosvg
+matplotlib
+numpy
+pandas
+pyside6
