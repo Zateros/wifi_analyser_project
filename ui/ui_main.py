@@ -20,6 +20,7 @@ from PySide6.QtWidgets import (QApplication, QComboBox, QFormLayout, QFrame,
     QPushButton, QSizePolicy, QWidget)
 
 from widgets.busy_spinner import BusySpinner
+from widgets.clickable_label import ClickableLabel
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -134,7 +135,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.floor_view.sizePolicy().hasHeightForWidth())
         self.floor_view.setSizePolicy(sizePolicy)
         self.floor_view.setMinimumSize(QSize(1120, 630))
-        self.floor_layout = QLabel(self.floor_view)
+        self.floor_layout = ClickableLabel(self.floor_view)
         self.floor_layout.setObjectName(u"floor_layout")
         self.floor_layout.setGeometry(QRect(0, 0, 1120, 630))
         sizePolicy.setHeightForWidth(self.floor_layout.sizePolicy().hasHeightForWidth())

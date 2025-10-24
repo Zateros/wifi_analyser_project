@@ -197,7 +197,7 @@
         <height>630</height>
        </size>
       </property>
-      <widget class="QLabel" name="floor_layout">
+      <widget class="ClickableLabel" name="floor_layout">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -870,6 +870,11 @@
    <extends>QWidget</extends>
    <header location="global">widgets.busy_spinner.h</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ClickableLabel</class>
+   <extends>QLabel</extends>
+   <header location="global">widgets.clickable_label.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

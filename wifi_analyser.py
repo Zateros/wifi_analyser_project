@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from utils.util import measure_headers
 import statistics, re, argparse, subprocess, csv, datetime, time, os, json, sys
 
 debug = False
@@ -263,31 +264,6 @@ def entry(args):
 
     debug = args.debug
 
-    headers = [
-        "timestamp",
-        "iface",
-        "ssid",
-        "bssid",
-        "freq_mhz",
-        "channel",
-        "signal_dbm",
-        "tx_bitrate_mbps",
-        "ping_target",
-        "ping_avg_ms",
-        "ping_min_ms",
-        "ping_max_ms",
-        "ping_jitter_ms",
-        "ping_loss_pct",
-        "ping_success",
-        "download",
-        "upload",
-        "position_x",
-        "position_y",
-        "position_in_room",
-        "pcap_file",
-        "ntp_synced",
-    ]
-
     tcpdump_proc = None
     if args.pcap:
         print("Starting tcpdump...")
@@ -299,7 +275,7 @@ def entry(args):
 
     first_write = not os.path.exists(args.out) or args.overwrite
     csvfile = open(args.out, "w" if args.overwrite else "a", newline="")
-    writer = csv.DictWriter(csvfile, fieldnames=headers)
+    writer = csv.DictWriter(csvfile, fieldnames=measure_headers)
     if first_write:
         writer.writeheader()
         csvfile.flush()
@@ -312,7 +288,7 @@ def entry(args):
             while True:
                 seq += 1
 
-                row = {h: "" for h in headers}
+                row = {h: "" for h in measure_headers}
 
                 try:
                     inp = input(
@@ -344,7 +320,7 @@ def entry(args):
 
             print("Done.")
     else:
-        row = {h: "" for h in headers}
+        row = {h: "" for h in measure_headers}
 
         row["position_x"] = args.x
         row["position_y"] = args.y

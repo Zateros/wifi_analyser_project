@@ -1,12 +1,19 @@
-from PySide6.QtCore import QThreadPool, Slot
+from PySide6.QtCore import QThreadPool, Slot, QPoint
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
 from typing import cast
 
 from ui.ui_main import Ui_MainWindow
+from widgets.ap import AP
 from wifi_analyser import entry
 from utils.workers import Worker
-from utils.util import make_image, make_repmap, get_wireless_interfaces
+from utils.util import (
+    make_image,
+    make_repmap,
+    get_wireless_interfaces,
+    save_ap_location,
+    load,
+)
 
 import sys
 
@@ -25,6 +32,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.interface_combo.addItems(get_wireless_interfaces())
 
         self._pixmap = QPixmap()
+
+        self.floor_layout.right_clicked.connect(self.place_new_ap)
 
         self.last_clicked_button: QPushButton
 
@@ -122,6 +131,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             button.clicked.connect(self.room_button_clicked)
             button.setStyleSheet(self.default_button_style)
 
+        self.aps: list[AP] = []
+
+        self.populate_from_file()
+
     @Slot(str)
     def on_done(self, msg):
         if msg == "done":
@@ -151,12 +164,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for button in self.buttons.keys():
             self.buttons[button] = False
 
+    def populate_from_file(self):
+        (done, self.aps) = load(self, self.building_value + self.floor_value)
+
+        for button in self.buttons.keys():
+            if button.objectName() in done:
+                button.setStyleSheet(self.completed_button_style)
+                self.buttons[button] = True
+
     def floor_or_building_changed(self, text):
         self.building_value = self.building_combo.currentText()
         self.floor_value = self.floor_combo.currentText()
 
         self.set_background_values()
         self.set_buttons_style(self.default_button_style)
+
+        for ap in self.aps:
+            ap.deleteLater()
+
+        self.populate_from_file()
 
     def room_button_clicked(self):
         if self.is_running:
@@ -202,6 +228,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             worker.signals.finished.connect(self.on_done)
             self.pool.start(worker)
             self.is_running = True
+
+    def place_new_ap(self, x, y):
+        point = self.floor_layout.mapToGlobal(QPoint(x, y))
+        ap = AP(self, point)
+
+        self.aps.append(ap)
+
+        save_ap_location(f"{self.building_value}{self.floor_value}", point.x(), point.y())
 
 
 if __name__ == "__main__":

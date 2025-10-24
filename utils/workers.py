@@ -20,14 +20,3 @@ class Worker(QRunnable):
 
 class WorkerSignals(QObject):
     finished = Signal(str)
-
-
-class DelayWorker(QRunnable):
-    def __init__(self, delay_seconds: float = 3.0):
-        super().__init__()
-        self.delay = delay_seconds
-        self.signals = WorkerSignals()
-
-    def run(self):
-        time.sleep(self.delay)
-        self.signals.finished.emit()
