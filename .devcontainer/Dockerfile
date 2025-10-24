@@ -28,4 +28,4 @@ RUN pip install         \
     matplotlib          \
     pandas              \
     numpy               \
-    pyside6             \
+    pyside6             

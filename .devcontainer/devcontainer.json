@@ -1,7 +1,7 @@
 {
     "name": "WiFi Analytics",
     "build": {
-        "dockerfile": "Dockerfile.dev",
+        "dockerfile": "Dockerfile",
         "options": [
             "--format=docker"
         ]
