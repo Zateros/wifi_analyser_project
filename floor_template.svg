@@ -5,7 +5,7 @@
    viewBox="0 0 1920 1080"
    fill="none"
    version="1.1"
-   id="svg44"
+   id="svg25"
    sodipodi:docname="floor_template.svg"
    inkscape:version="1.4.2 (ebf0e940d0, 2025-05-08)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
@@ -13,9 +13,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs44" />
+     id="defs25" />
   <sodipodi:namedview
-     id="namedview44"
+     id="namedview25"
      pagecolor="#ffffff"
      bordercolor="#000000"
      borderopacity="0.25"
@@ -23,725 +23,811 @@
      inkscape:pageopacity="0.0"
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
-     inkscape:zoom="0.55004805"
-     inkscape:cx="427.2354"
-     inkscape:cy="586.31241"
+     inkscape:zoom="0.70462963"
+     inkscape:cx="1248.1735"
+     inkscape:cy="498.84363"
      inkscape:window-width="1646"
      inkscape:window-height="1001"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg44" />
+     inkscape:current-layer="Floorplan" />
   <rect
      width="1920"
      height="1080"
-     fill="white"
+     fill="#F5F5F5"
      id="rect1" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text1"
-     x="0.67339242"
-     y="-3.44225"><tspan
-       x="407.63837"
-       y="349.05774"
-       id="tspan1"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{fl1}</tspan></text>
-  <rect
-     x="364.014"
-     y="193.963"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect2" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text2"
-     y="-2.1234131"
-     x="3.4843979"><tspan
-       x="565.34338"
-       y="350.50659"
-       id="tspan2"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{fl2}</tspan></text>
-  <rect
-     x="521.719"
-     y="194.093"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect3" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text3"
-     x="4.1093369"
-     y="-2.1234131"><tspan
-       x="723.04938"
-       y="350.50659"
-       id="tspan3"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{fl3}</tspan></text>
-  <rect
-     x="679.425"
-     y="194.093"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect4" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text4"
-     y="-2.1234283"
-     x="4.2074203"><tspan
-       x="880.75537"
-       y="349.46057"
-       id="tspan4"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{fl4}</tspan></text>
-  <rect
-     x="837.13098"
-     y="193.047"
-     width="157.388"
-     height="288.95999"
-     stroke="#000000"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect5" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text5"
-     y="-2.1234131"
-     x="-0.14772995"><tspan
-       x="1055.5623"
-       y="349.32959"
-       id="tspan5"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{sl1}</tspan></text>
-  <rect
-     x="1016"
-     y="192.916"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect6" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text6"
-     y="-2.1234283"
-     x="2.6722164"><tspan
-       x="1213.2722"
-       y="349.46057"
-       id="tspan6"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{sl2}</tspan></text>
-  <rect
-     x="1173.71"
-     y="193.047"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect7" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text7"
-     y="-2.1234283"
-     x="3.2922115"><tspan
-       x="1370.9723"
-       y="349.46057"
-       id="tspan7"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{sl3}</tspan></text>
-  <rect
-     x="1331.41"
-     y="193.047"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect8" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text8"
-     y="-4.5298615"
-     x="-0.88035625"><tspan
-       x="1498.4097"
-       y="347.51514"
-       id="tspan8"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Konyha</tspan></text>
-  <rect
-     x="1489.12"
-     y="192"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect9" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text9"
-     y="-2.1233978"
-     x="1.3679312"><tspan
-       x="405.63791"
-       y="754.3186"
-       id="tspan9"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{fr1}</tspan></text>
-  <rect
-     x="364.014"
-     y="597.905"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect10" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text10"
-     x="4.1799116"
-     y="-2.1234589"><tspan
-       x="563.3429"
-       y="755.49554"
-       id="tspan10"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{fr2}</tspan></text>
-  <rect
-     x="521.719"
-     y="599.082"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect11" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text11"
-     y="-2.1234589"
-     x="4.8048506"><tspan
-       x="721.04889"
-       y="755.49554"
-       id="tspan11"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{fr3}</tspan></text>
-  <rect
-     x="679.425"
-     y="599.082"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect12" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text12"
-     y="-2.1234589"
-     x="4.9018974"><tspan
-       x="878.75488"
-       y="754.44855"
-       id="tspan12"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{fr4}</tspan></text>
-  <rect
-     x="837.131"
-     y="598.035"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect13" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text13"
-     y="-2.1244354"
-     x="0.28637117"><tspan
-       x="1053.2964"
-       y="754.31757"
-       id="tspan13"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{sr1}</tspan></text>
-  <rect
-     x="1016"
-     y="597.904"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect14" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text14"
-     y="-2.1234589"
-     x="3.0963078"><tspan
-       x="1211.0063"
-       y="754.44855"
-       id="tspan14"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{sr2}</tspan></text>
-  <rect
-     x="1173.71"
-     y="598.035"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect15" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text15"
-     x="3.7164249"><tspan
-       x="1368.7064"
-       y="756.57202"
-       id="tspan15"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{sr3}</tspan></text>
-  <rect
-     x="1331.41"
-     y="598.035"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect16" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text16"
-     y="-2.1233978"
-     x="3.8164005"><tspan
-       x="1526.4164"
-       y="753.40259"
-       id="tspan16"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">{sr4}</tspan></text>
-  <rect
-     x="1489.12"
-     y="596.989"
-     width="157.388"
-     height="288.96"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect17" />
-  <text
-     fill="black"
-     xml:space="preserve"
-     style="white-space:pre;-inkscape-font-specification:'Nimbus Sans, Normal';font-family:'Nimbus Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:40.82608795px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-     font-family="Inter"
-     font-size="40"
-     letter-spacing="0em"
-     id="text17"><tspan
-       x="91.0794"
-       y="570.782"
-       id="tspan17"
-       style="-inkscape-font-specification:'Nimbus Sans, Normal';font-family:'Nimbus Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:40.82608795px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Lépcsőház</tspan></text>
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text18"
-     y="0.94657516"
-     x="3.1216097"><tspan
-       x="105.00961"
-       y="714.98761"
-       id="tspan18"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Liftek</tspan></text>
-  <rect
-     x="26"
-     y="215.2"
-     width="337.557"
-     height="425.007"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect18" />
-  <rect
-     x="26"
-     y="639.756"
-     width="337.557"
-     height="211.118"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect19" />
-  <rect
-     x="26"
-     y="639.756"
-     width="257.518"
-     height="120.639"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect20" />
-  <rect
-     x="26"
-     y="215.2"
-     width="191.398"
-     height="256.358"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect21" />
-  <rect
-     x="26"
-     y="215.2"
-     width="98.5991"
-     height="256.358"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect22" />
-  <rect
-     x="26"
-     y="429.798"
-     width="191.398"
-     height="41.7596"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect23" />
-  <rect
-     x="26"
-     y="388.064"
-     width="191.506"
-     height="41.9883"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect24" />
-  <rect
-     x="26"
-     y="346.076"
-     width="191.506"
-     height="41.9883"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect25" />
-  <rect
-     x="26"
-     y="304.088"
-     width="191.506"
-     height="41.9883"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect26" />
-  <rect
-     x="26"
-     y="262.099"
-     width="191.506"
-     height="41.9883"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect27" />
-  <text
-     transform="rotate(45)"
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre"
-     font-family="Inter"
-     font-size="35px"
-     letter-spacing="0em"
-     id="text27"
-     x="365.78931"
-     y="15.505885"><tspan
-       x="388.13852"
-       y="52.012882"
-       id="tspan27"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:40.8261px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Tanuló</tspan></text>
-  <rect
-     x="217.398"
-     y="215.2"
-     width="146.591"
-     height="256.358"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect28" />
-  <rect
-     x="1892.42"
-     y="885.673"
-     width="245.918"
-     height="693.673"
-     transform="rotate(-180 1892.42 885.673)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect29" />
-  <rect
-     x="1892.42"
-     y="885.673"
-     width="245.918"
-     height="288.837"
-     transform="rotate(-180 1892.42 885.673)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect30" />
-  <rect
-     x="1892.42"
-     y="644.146"
-     width="245.918"
-     height="47.3095"
-     transform="rotate(-180 1892.42 644.146)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect31" />
-  <rect
-     x="1892.42"
-     y="691.455"
-     width="245.918"
-     height="47.3095"
-     transform="rotate(-180 1892.42 691.455)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect32" />
-  <rect
-     x="1892.42"
-     y="738.765"
-     width="245.918"
-     height="47.3095"
-     transform="rotate(-180 1892.42 738.765)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect33" />
-  <rect
-     x="1892.42"
-     y="786.074"
-     width="245.918"
-     height="47.3095"
-     transform="rotate(-180 1892.42 786.074)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect34" />
-  <rect
-     x="1892.42"
-     y="833.384"
-     width="245.918"
-     height="47.3095"
-     transform="rotate(-180 1892.42 833.384)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect35" />
-  <rect
-     x="1770.62"
-     y="885.673"
-     width="124.119"
-     height="288.837"
-     transform="rotate(-180 1770.62 885.673)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect36" />
-  <rect
-     x="1770.62"
-     y="644.146"
-     width="124.119"
-     height="47.3095"
-     transform="rotate(-180 1770.62 644.146)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect37" />
-  <rect
-     x="1770.62"
-     y="691.455"
-     width="124.119"
-     height="47.3095"
-     transform="rotate(-180 1770.62 691.455)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect38" />
-  <rect
-     x="1770.62"
-     y="738.765"
-     width="124.119"
-     height="47.3095"
-     transform="rotate(-180 1770.62 738.765)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect39" />
-  <rect
-     x="1770.62"
-     y="786.074"
-     width="124.119"
-     height="47.3095"
-     transform="rotate(-180 1770.62 786.074)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect40" />
-  <rect
-     x="1770.62"
-     y="833.384"
-     width="124.119"
-     height="47.3095"
-     transform="rotate(-180 1770.62 833.384)"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect41" />
-  <text
-     fill="black"
-     xml:space="preserve"
-     style="white-space:pre;-inkscape-font-specification:'Nimbus Sans, Normal';font-family:'Nimbus Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:40.82608795px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-     font-family="Inter"
-     font-size="40"
-     letter-spacing="0em"
-     id="text41"><tspan
-       x="1666.35"
-       y="433.904"
-       id="tspan41"
-       style="-inkscape-font-specification:'Nimbus Sans, Normal';font-family:'Nimbus Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:40.82608795px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Lépcsőház</tspan></text>
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="white-space:pre;-inkscape-font-specification:'Nimbus Sans, Normal';font-family:'Nimbus Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:40.82608795px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text42"
-     y="-2.4095306"><tspan
-       x="606.39801"
-       y="551.55243"
-       id="tspan42"
-       style="-inkscape-font-specification:'Nimbus Sans, Normal';font-family:'Nimbus Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:40.82608795px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Folyosó</tspan></text>
-  <text
-     fill="black"
-     xml:space="preserve"
-     style="white-space:pre;-inkscape-font-specification:'Nimbus Sans, Normal';font-family:'Nimbus Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:40.82608795px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal"
-     font-family="Inter"
-     font-size="40"
-     letter-spacing="0em"
-     id="text43"><tspan
-       x="1263.53"
-       y="553.962"
-       id="tspan43"
-       style="-inkscape-font-specification:'Nimbus Sans, Normal';font-family:'Nimbus Sans';font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:40.82608795px;font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal">Folyosó</tspan></text>
-  <rect
-     x="364.014"
-     y="482.445"
-     width="1282.39"
-     height="114.543"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect43" />
-  <rect
-     x="996.528"
-     y="481.997"
-     width="17.4305"
-     height="114.543"
-     fill="#D9D9D9"
-     stroke="black"
-     stroke-width="4"
-     stroke-linejoin="round"
-     id="rect44" />
-  <text
-     fill="#000000"
-     xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:64px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;white-space:pre;letter-spacing:0em;fill:#000000"
-     font-family="Inter"
-     font-size="40px"
-     letter-spacing="0em"
-     id="text44"
-     x="658.81439"
-     y="-234.77789"><tspan
-       x="960.59198"
-       y="117.72213"
-       id="tspan44"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:64px;font-family:'Nimbus Sans';-inkscape-font-specification:'Nimbus Sans, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle">{floor}</tspan></text>
+  <g
+     id="Floor">
+    <rect
+       id="Rectangle 1"
+       width="1920"
+       height="1080"
+       fill="white" />
+    <g
+       id="Floorplan">
+      <g
+         id="FL1">
+        <text
+           id="{fl1}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-15.077484"><tspan
+             x="391.92252"
+             y="353.04501"
+             id="tspan1">{fl1}</tspan></text>
+        <rect
+           id="Rectangle 2"
+           x="364"
+           y="194"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="FL2">
+        <text
+           id="{fl2}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-11.077484"><tspan
+             x="549.92249"
+             y="352.54501"
+             id="tspan2">{fl2}</tspan></text>
+        <rect
+           id="Rectangle 2_2"
+           x="522"
+           y="194"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="FL3">
+        <text
+           id="{fl3}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-11.241486"><tspan
+             x="706.92249"
+             y="353.02499"
+             id="tspan3">{fl3}</tspan></text>
+        <rect
+           id="Rectangle 2_3"
+           x="679"
+           y="194"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="FL4">
+        <text
+           id="{fl4}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-11.271515"><tspan
+             x="864.34753"
+             y="352.98499"
+             id="tspan4">{fl4}</tspan></text>
+        <rect
+           id="Rectangle 2_4"
+           x="836.425"
+           y="193.96"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="SL1">
+        <text
+           id="{sl1}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-14.276337"><tspan
+             x="1040.5436"
+             y="352.98499"
+             id="tspan5">{sl1}</tspan></text>
+        <rect
+           id="Rectangle 2_5"
+           x="1016"
+           y="193.96"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="SL2">
+        <text
+           id="{sl2}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-11.766449"><tspan
+             x="1198.2535"
+             y="352.98499"
+             id="tspan6">{sl2}</tspan></text>
+        <rect
+           id="Rectangle 2_6"
+           x="1173.71"
+           y="193.96"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="SL3">
+        <text
+           id="{sl3}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-11.606415"><tspan
+             x="1355.9536"
+             y="352.98499"
+             id="tspan7">{sl3}</tspan></text>
+        <rect
+           id="Rectangle 2_7"
+           x="1331.41"
+           y="193.96"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="SL4">
+        <text
+           id="Konyha"
+           fill="black"
+           xml:space="preserve"
+           style="white-space: pre"
+           font-family="Inter"
+           font-size="40"
+           letter-spacing="0em"><tspan
+             x="1497"
+             y="313.3"
+             id="tspan8">Konyha</tspan></text>
+        <text
+           id="ÃtkezÅ"
+           fill="black"
+           xml:space="preserve"
+           style="white-space: pre"
+           font-family="Inter"
+           font-size="40"
+           letter-spacing="0em"><tspan
+             x="1684"
+             y="346.545"
+             id="tspan9">Étkező</tspan></text>
+        <rect
+           id="Rectangle 2_8"
+           x="1489.12"
+           y="193.96"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+        <rect
+           id="Rectangle 3"
+           x="1489"
+           y="405.96"
+           width="158"
+           height="77"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+        <rect
+           id="Rectangle 4"
+           x="1646"
+           y="224"
+           width="205"
+           height="216"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="FR1">
+        <text
+           id="{fr1}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-14.7435"><tspan
+             x="389.27051"
+             y="756.92499"
+             id="tspan10">{fr1}</tspan></text>
+        <rect
+           id="Rectangle 2_9"
+           x="364.014"
+           y="597.9"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="FR2">
+        <text
+           id="{fr2}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-11.656525"><tspan
+             x="546.97546"
+             y="756.92499"
+             id="tspan11">{fr2}</tspan></text>
+        <rect
+           id="Rectangle 2_10"
+           x="521.719"
+           y="597.9"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="FR3">
+        <text
+           id="{fr3}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-10.909515"><tspan
+             x="704.68152"
+             y="756.92499"
+             id="tspan12">{fr3}</tspan></text>
+        <rect
+           id="Rectangle 2_11"
+           x="679.425"
+           y="597.9"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="FR4">
+        <text
+           id="{fr4}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-11.334503"><tspan
+             x="862.38745"
+             y="756.92499"
+             id="tspan13">{fr4}</tspan></text>
+        <rect
+           id="Rectangle 2_12"
+           x="837.131"
+           y="597.9"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="SR1">
+        <text
+           id="{sr1}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-14.012421"><tspan
+             x="1037.8776"
+             y="756.92499"
+             id="tspan14">{sr1}</tspan></text>
+        <rect
+           id="Rectangle 2_13"
+           x="1016"
+           y="597.9"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="SR2">
+        <text
+           id="{sr2}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-12.092499"><tspan
+             x="1195.5875"
+             y="756.92499"
+             id="tspan15">{sr2}</tspan></text>
+        <rect
+           id="Rectangle 2_14"
+           x="1173.71"
+           y="597.9"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="SR3">
+        <text
+           id="{sr3}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-11.352386"><tspan
+             x="1353.2876"
+             y="756.92499"
+             id="tspan16">{sr3}</tspan></text>
+        <rect
+           id="Rectangle 2_15"
+           x="1331.41"
+           y="597.9"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="SR4">
+        <text
+           id="{sr4}"
+           fill="#000000"
+           xml:space="preserve"
+           style="white-space:pre"
+           font-family="Inter"
+           font-size="40px"
+           letter-spacing="0em"
+           x="-10.012421"><tspan
+             x="1510.9976"
+             y="756.92499"
+             id="tspan17">{sr4}</tspan></text>
+        <rect
+           id="Rectangle 2_16"
+           x="1489.12"
+           y="597.9"
+           width="157.388"
+           height="288.96"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+      <g
+         id="StaircaseL">
+        <text
+           id="lepcsohaz"
+           fill="black"
+           xml:space="preserve"
+           style="white-space: pre"
+           font-family="Inter"
+           font-size="40"
+           letter-spacing="0em"><tspan
+             x="90"
+             y="571.045"
+             id="tspan18">Lépcsőház</tspan></text>
+        <text
+           id="Liftek"
+           fill="black"
+           xml:space="preserve"
+           style="white-space: pre"
+           font-family="Inter"
+           font-size="40"
+           letter-spacing="0em"><tspan
+             x="109"
+             y="714.045"
+             id="tspan19">Liftek</tspan></text>
+        <rect
+           id="Rectangle 2_17"
+           x="26"
+           y="215.2"
+           width="337.557"
+           height="425.007"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+        <rect
+           id="Rectangle 3_2"
+           x="26"
+           y="639.756"
+           width="337.557"
+           height="211.118"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+        <rect
+           id="Rectangle 4_2"
+           x="26"
+           y="639.756"
+           width="257.518"
+           height="120.639"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+        <g
+           id="stairs">
+          <rect
+             id="Rectangle 4_3"
+             x="26"
+             y="215.2"
+             width="191.398"
+             height="256.358"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 10"
+             x="26"
+             y="215.2"
+             width="98.5991"
+             height="256.358"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 5"
+             x="26"
+             y="429.798"
+             width="191.398"
+             height="41.7596"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 6"
+             x="26"
+             y="388.064"
+             width="191.506"
+             height="41.9883"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 7"
+             x="26"
+             y="346.076"
+             width="191.506"
+             height="41.9883"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 8"
+             x="26"
+             y="304.088"
+             width="191.506"
+             height="41.9883"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 9"
+             x="26"
+             y="262.099"
+             width="191.506"
+             height="41.9883"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+        </g>
+        <g
+           id="Study">
+          <text
+             id="tanulo"
+             transform="translate(266 285) rotate(45)"
+             fill="black"
+             xml:space="preserve"
+             style="white-space: pre"
+             font-family="Inter"
+             font-size="35"
+             letter-spacing="0em"><tspan
+               x="0"
+               y="36.507"
+               id="tspan20">Tanuló</tspan></text>
+          <rect
+             id="Rectangle 2_18"
+             x="217"
+             y="215"
+             width="146.591"
+             height="256.358"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+        </g>
+      </g>
+      <g
+         id="StaircaseR">
+        <rect
+           id="Rectangle 2_19"
+           x="1850.9"
+           y="845"
+           width="203.988"
+           height="621"
+           transform="rotate(-180 1850.9 845)"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+        <g
+           id="stairs_2">
+          <rect
+             id="Rectangle 4_4"
+             x="1851.26"
+             y="844.685"
+             width="204.752"
+             height="245.685"
+             transform="rotate(-180 1851.26 844.685)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 5_2"
+             x="1851.26"
+             y="639.242"
+             width="204.752"
+             height="40.2415"
+             transform="rotate(-180 1851.26 639.242)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 6_2"
+             x="1851.26"
+             y="679.483"
+             width="204.752"
+             height="40.2415"
+             transform="rotate(-180 1851.26 679.483)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 7_2"
+             x="1851.26"
+             y="719.725"
+             width="204.752"
+             height="40.2415"
+             transform="rotate(-180 1851.26 719.725)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 8_2"
+             x="1851.26"
+             y="759.966"
+             width="204.752"
+             height="40.2415"
+             transform="rotate(-180 1851.26 759.966)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 9_2"
+             x="1851.26"
+             y="800.208"
+             width="204.752"
+             height="40.2415"
+             transform="rotate(-180 1851.26 800.208)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+        </g>
+        <g
+           id="stairs_3">
+          <rect
+             id="Rectangle 4_5"
+             x="1749.85"
+             y="844.685"
+             width="103.342"
+             height="245.685"
+             transform="rotate(-180 1749.85 844.685)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 5_3"
+             x="1749.85"
+             y="639.242"
+             width="103.342"
+             height="40.2415"
+             transform="rotate(-180 1749.85 639.242)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 6_3"
+             x="1749.85"
+             y="679.483"
+             width="103.342"
+             height="40.2415"
+             transform="rotate(-180 1749.85 679.483)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 7_3"
+             x="1749.85"
+             y="719.725"
+             width="103.342"
+             height="40.2415"
+             transform="rotate(-180 1749.85 719.725)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 8_3"
+             x="1749.85"
+             y="759.966"
+             width="103.342"
+             height="40.2415"
+             transform="rotate(-180 1749.85 759.966)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+          <rect
+             id="Rectangle 9_3"
+             x="1749.85"
+             y="800.208"
+             width="103.342"
+             height="40.2415"
+             transform="rotate(-180 1749.85 800.208)"
+             stroke="black"
+             stroke-width="4"
+             stroke-linejoin="round" />
+        </g>
+        <text
+           id="lepcsohaz_2"
+           transform="translate(1656 493)"
+           fill="black"
+           xml:space="preserve"
+           style="white-space: pre"
+           font-family="Inter"
+           font-size="36"
+           letter-spacing="0em"><tspan
+             x="0"
+             y="46.5909"
+             id="tspan21">Lépcsőház</tspan></text>
+      </g>
+      <g
+         id="Hallway">
+        <text
+           id="folyoso"
+           fill="black"
+           xml:space="preserve"
+           style="white-space: pre"
+           font-family="Inter"
+           font-size="40"
+           letter-spacing="0em"><tspan
+             x="603.475"
+             y="553.962"
+             id="tspan22">Folyosó</tspan></text>
+        <text
+           id="folyoso_2"
+           fill="black"
+           xml:space="preserve"
+           style="white-space: pre"
+           font-family="Inter"
+           font-size="40"
+           letter-spacing="0em"><tspan
+             x="1260.03"
+             y="553.962"
+             id="tspan23">Folyosó</tspan></text>
+        <rect
+           id="Rectangle 2_20"
+           x="364.014"
+           y="482.445"
+           width="1282.39"
+           height="114.543"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+        <rect
+           id="Rectangle 3_3"
+           x="996.528"
+           y="481.997"
+           width="17.4305"
+           height="114.543"
+           fill="#D9D9D9"
+           stroke="black"
+           stroke-width="4"
+           stroke-linejoin="round" />
+      </g>
+    </g>
+    <text
+       id="{floor}"
+       fill="black"
+       xml:space="preserve"
+       style="white-space: pre"
+       font-family="Inter"
+       font-size="64"
+       font-weight="bold"
+       letter-spacing="0em"><tspan
+         x="860.406"
+         y="111.773"
+         id="tspan24">{floor}</tspan></text>
+    <text
+       id="epk"
+       fill="black"
+       xml:space="preserve"
+       style="white-space: pre"
+       font-family="Inter"
+       font-size="40"
+       font-weight="300"
+       letter-spacing="0em"><tspan
+         x="777"
+         y="1064.05"
+         id="tspan25">Erdős Pál Kollégium</tspan></text>
+    <rect
+       id="Rectangle 3_4"
+       x="364"
+       y="193"
+       width="1282"
+       height="695"
+       stroke="black"
+       stroke-width="4"
+       stroke-linejoin="round" />
+  </g>
 </svg>
