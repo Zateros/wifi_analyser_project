@@ -16,7 +16,7 @@ build_and_release_job:
     - apt update -y
     - apt install -y python3.12 python3-pip
     - apt install -y qt6-base-dev qt6-wayland libwayland-dev
-    - python3.12 -m pip install -r requirements.txt
+    - python3.12 -m pip install --break-system-packages -r requirements.txt
     - python3.12 -m pyinstaller --onefile --name "WifiAnalyser" --windowed \
         --add-data "media/floor_template.svg:./media" \
         --add-data "media/mouse_right_click.png:./media" gui.py
