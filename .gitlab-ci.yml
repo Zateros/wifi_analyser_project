@@ -14,7 +14,7 @@ build_and_release_job:
     - apt install -y software-properties-common curl
     - add-apt-repository ppa:deadsnakes/ppa -y
     - apt update -y
-    - apt install -y python3.12 python3-pip
+    - apt install -y python3.12 python3-pip python3.12-venv
     - apt install -y qt6-base-dev qt6-wayland libwayland-dev
     - python3.12 -m venv venv
     - . venv/bin/activate
