@@ -19,11 +19,8 @@ build_and_release_job:
     - python3.12 -m venv venv
     - . venv/bin/activate
     - pip install -r requirements.txt
-    - pyinstaller --onefile --name "WifiAnalyser" --windowed \
-        --add-data "media/floor_template.svg:./media" \
-        --add-data "media/mouse_right_click.png:./media" gui.py
-    - curl -sL "https://gitlab.com/api/v4/projects/gitlab-org%2Frelease-cli/releases/permalink/latest/downloads/bin/release-cli-linux-amd64" \
-        -o /usr/local/bin/release-cli
+    - pyinstaller --onefile --name "WifiAnalyser" --windowed --add-data "media/floor_template.svg:./media" --add-data "media/mouse_right_click.png:./media" gui.py
+    - curl -sL "https://gitlab.com/api/v4/projects/gitlab-org%2Frelease-cli/releases/permalink/latest/downloads/bin/release-cli-linux-amd64" -o /usr/local/bin/release-cli
     - chmod +x /usr/local/bin/release-cli
     - >
       curl --fail-with-body --header "PRIVATE-TOKEN: $TOKEN"
