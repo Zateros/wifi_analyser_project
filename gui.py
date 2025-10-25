@@ -222,8 +222,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 f"{pir}",
             ]
 
-            print(args)
-
             worker = Worker(func=entry, args=args)
             worker.signals.finished.connect(self.on_done)
             self.pool.start(worker)

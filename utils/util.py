@@ -4,7 +4,7 @@ from widgets.ap import AP
 from PySide6.QtWidgets import QMainWindow, QWidget
 from PySide6.QtCore import QPoint
 
-import io, os, csv, re, subprocess
+import io, sys, os, csv, re, subprocess
 
 aps_file: str = "ap_locations.csv"
 aps_headers = ["floor", "x", "y"]
@@ -38,7 +38,7 @@ def make_image(
     replace_map: dict[str, str] = {},
     template_path: str = "floor_template.svg",
 ):
-    template = Path(template_path).read_text()
+    template = Path(resource_path(template_path)).read_text()
 
     for key, value in replace_map.items():
         template = template.replace(f"{{{key}}}", value)
@@ -147,3 +147,12 @@ def load(
         file.close()
 
     return (done_zones, aps)
+
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)

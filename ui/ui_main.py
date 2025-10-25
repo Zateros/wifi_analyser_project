@@ -66,6 +66,7 @@ class Ui_MainWindow(object):
         self.floor_combo.addItem("")
         self.floor_combo.addItem("")
         self.floor_combo.addItem("")
+        self.floor_combo.addItem("")
         self.floor_combo.setObjectName(u"floor_combo")
 
         self.sidebar_view.setWidget(1, QFormLayout.ItemRole.FieldRole, self.floor_combo)
@@ -318,6 +319,7 @@ class Ui_MainWindow(object):
         self.floor_combo.setItemText(7, QCoreApplication.translate("MainWindow", u"7", None))
         self.floor_combo.setItemText(8, QCoreApplication.translate("MainWindow", u"8", None))
         self.floor_combo.setItemText(9, QCoreApplication.translate("MainWindow", u"9", None))
+        self.floor_combo.setItemText(10, QCoreApplication.translate("MainWindow", u"10", None))
 
         self.floor_combo.setPlaceholderText(QCoreApplication.translate("MainWindow", u"1", None))
         self.interface_label.setText(QCoreApplication.translate("MainWindow", u"Interface", None))
