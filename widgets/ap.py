@@ -24,8 +24,6 @@ class AP(QWidget):
 
         self.move(pos.x() - size // 2, pos.y() - size // 2)
         
-        self.setAttribute(Qt.WidgetAttribute.WA_TransparentForMouseEvents, True)
-        
         self.show()
 
     def paintEvent(self, event: QPaintEvent) -> None:
