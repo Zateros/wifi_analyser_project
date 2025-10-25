@@ -3,31 +3,34 @@ stages:
 
 workflow:
   rules:
-    - if: $CI_COMMIT_BRANCH == "main"
+    - if: '$CI_COMMIT_BRANCH == "main"'
 
 build_and_release_job:
   stage: build_and_release
   image: ubuntu:latest
-  
-  before_script:
-    - apt update
-    - apt install -y software-properties-common curl
-    - add-apt-repository ppa:deadsnakes/ppa -y
-    - apt update
-    - apt install -y python3.12 python3-pip
-    - apt install -y qt6-base-dev qt6-wayland libwayland-dev
-    
-    - python3.12 -m pip install -r requirements.txt
 
   script:
-    - python3.12 -m pyinstaller --onefile --name "WifiAnalyser" --windowed --add-data "media/floor_template.svg:./media" --add-data "media/mouse_right_click.png:./media" gui.py
-
-    - curl -sL "https://gitlab.com/api/v4/projects/gitlab-org%2Frelease-cli/releases/permalink/latest/downloads/bin/release-cli-linux-amd64" -o /usr/local/bin/release-cli
+    - apt update -y
+    - apt install -y software-properties-common curl
+    - add-apt-repository ppa:deadsnakes/ppa -y
+    - apt update -y
+    - apt install -y python3.12 python3-pip
+    - apt install -y qt6-base-dev qt6-wayland libwayland-dev
+    - python3.12 -m pip install -r requirements.txt
+    - python3.12 -m pyinstaller --onefile --name "WifiAnalyser" --windowed \
+        --add-data "media/floor_template.svg:./media" \
+        --add-data "media/mouse_right_click.png:./media" gui.py
+    - curl -sL "https://gitlab.com/api/v4/projects/gitlab-org%2Frelease-cli/releases/permalink/latest/downloads/bin/release-cli-linux-amd64" \
+        -o /usr/local/bin/release-cli
     - chmod +x /usr/local/bin/release-cli
-    
-    - 'curl --fail-with-body --header "PRIVATE-TOKEN: $TOKEN" --request DELETE "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/releases/release" || echo "Release \'release\' not found, proceeding."'
-    - 'curl --fail-with-body --header "PRIVATE-TOKEN: $TOKEN" --request DELETE "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/tags/release" || echo "Tag \'release\' not found, proceeding."'
-    
-    - release-cli create --name "Continous Release" --tag-name "release" \
+    - >
+      curl --fail-with-body --header "PRIVATE-TOKEN: $TOKEN"
+      --request DELETE "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/releases/release"
+      || echo "Release 'release' not found, proceeding."
+    - >
+      curl --fail-with-body --header "PRIVATE-TOKEN: $TOKEN"
+      --request DELETE "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/tags/release"
+      || echo "Tag 'release' not found, proceeding."
+    - release-cli create --name "Continuous Release" --tag-name "release" \
         --ref "$CI_COMMIT_SHA" \
         --asset "path=./dist/WifiAnalyser,name=WifiAnalyser"
