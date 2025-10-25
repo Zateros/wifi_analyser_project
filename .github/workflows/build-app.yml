@@ -20,23 +20,15 @@ jobs:
           requirements: 'requirements.txt'
           upload_exe_with_name: 'WifiAnalyser'
           options: --onefile, --name "WifiAnalyser", --windowed, --add-data "media/floor_template.svg:./media", --add-data "media/mouse_right_click.png:./media"
-      - name: Create Release
-        uses: actions/create-release@v1
-        id: create_release
+      - name: Create Release and Upload Artifact
+        uses: softprops/action-gh-release@v1
+        id: create_release_upload_artifact
         with:
           draft: false
           prerelease: false
-          release_name: 'Continous Release'
+          name: 'Continous Release'
           tag_name: 'release'
           body_path: ''
+          files: ./dist/WifiAnalyser
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
-      - name: Upload Artifact
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./dist/WifiAnalyser
-          asset_name: WifiAnalyser
-          asset_content_type: application/octet-stream
