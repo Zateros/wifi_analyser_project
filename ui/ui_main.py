@@ -71,6 +71,13 @@ class Ui_MainWindow(object):
 
         self.sidebar_view.setWidget(1, QFormLayout.ItemRole.FieldRole, self.floor_combo)
 
+        self.line = QFrame(self.centralwidget)
+        self.line.setObjectName(u"line")
+        self.line.setFrameShape(QFrame.Shape.HLine)
+        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+
+        self.sidebar_view.setWidget(2, QFormLayout.ItemRole.SpanningRole, self.line)
+
         self.interface_label = QLabel(self.centralwidget)
         self.interface_label.setObjectName(u"interface_label")
 
@@ -101,22 +108,25 @@ class Ui_MainWindow(object):
 
         self.sidebar_view.setWidget(5, QFormLayout.ItemRole.FieldRole, self.iperf_addr)
 
-        self.iperf_port = QLineEdit(self.centralwidget)
-        self.iperf_port.setObjectName(u"iperf_port")
-
-        self.sidebar_view.setWidget(6, QFormLayout.ItemRole.FieldRole, self.iperf_port)
-
         self.iperf_port_label = QLabel(self.centralwidget)
         self.iperf_port_label.setObjectName(u"iperf_port_label")
 
         self.sidebar_view.setWidget(6, QFormLayout.ItemRole.LabelRole, self.iperf_port_label)
 
-        self.line = QFrame(self.centralwidget)
-        self.line.setObjectName(u"line")
-        self.line.setFrameShape(QFrame.Shape.HLine)
-        self.line.setFrameShadow(QFrame.Shadow.Sunken)
+        self.iperf_port = QLineEdit(self.centralwidget)
+        self.iperf_port.setObjectName(u"iperf_port")
 
-        self.sidebar_view.setWidget(2, QFormLayout.ItemRole.SpanningRole, self.line)
+        self.sidebar_view.setWidget(6, QFormLayout.ItemRole.FieldRole, self.iperf_port)
+
+        self.mouse_click_graphic = QLabel(self.centralwidget)
+        self.mouse_click_graphic.setObjectName(u"mouse_click_graphic")
+
+        self.sidebar_view.setWidget(7, QFormLayout.ItemRole.LabelRole, self.mouse_click_graphic)
+
+        self.ap_label = QLabel(self.centralwidget)
+        self.ap_label.setObjectName(u"ap_label")
+
+        self.sidebar_view.setWidget(7, QFormLayout.ItemRole.FieldRole, self.ap_label)
 
 
         self.horizontalLayout.addLayout(self.sidebar_view)
@@ -331,6 +341,8 @@ class Ui_MainWindow(object):
         self.ping_target_label.setText(QCoreApplication.translate("MainWindow", u"Ping target", None))
         self.iperf_addr_label.setText(QCoreApplication.translate("MainWindow", u"IPerf3 target", None))
         self.iperf_port_label.setText(QCoreApplication.translate("MainWindow", u"IPerf3 port", None))
+        self.mouse_click_graphic.setText(QCoreApplication.translate("MainWindow", u"*m_graphic*", None))
+        self.ap_label.setText(QCoreApplication.translate("MainWindow", u"Place AP", None))
         self.floor_layout.setText("")
         self.fl11.setText("")
         self.fl12.setText("")

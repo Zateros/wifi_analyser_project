@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-pyinstaller ../gui.py --add-data "floor_template.svg:." --onefile --windowed -n wifianalyser
+pyinstaller ../gui.py --add-data "../media/floor_template.svg:." --add-data "../media/mouse_right_click.png:." --onefile --windowed -n wifianalyser

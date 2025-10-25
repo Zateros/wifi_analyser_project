@@ -128,6 +128,13 @@
         </item>
        </widget>
       </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="Line" name="line">
+        <property name="orientation">
+         <enum>Qt::Orientation::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
       <item row="3" column="0">
        <widget class="QLabel" name="interface_label">
         <property name="text">
@@ -162,9 +169,6 @@
       <item row="5" column="1">
        <widget class="QLineEdit" name="iperf_addr"/>
       </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="iperf_port"/>
-      </item>
       <item row="6" column="0">
        <widget class="QLabel" name="iperf_port_label">
         <property name="text">
@@ -172,10 +176,20 @@
         </property>
        </widget>
       </item>
-      <item row="2" column="0" colspan="2">
-       <widget class="Line" name="line">
-        <property name="orientation">
-         <enum>Qt::Orientation::Horizontal</enum>
+      <item row="6" column="1">
+       <widget class="QLineEdit" name="iperf_port"/>
+      </item>
+      <item row="7" column="0">
+       <widget class="QLabel" name="mouse_click_graphic">
+        <property name="text">
+         <string>*m_graphic*</string>
+        </property>
+       </widget>
+      </item>
+      <item row="7" column="1">
+       <widget class="QLabel" name="ap_label">
+        <property name="text">
+         <string>Place AP</string>
         </property>
        </widget>
       </item>

@@ -1,4 +1,4 @@
-from PySide6.QtCore import QThreadPool, Slot, QPoint
+from PySide6.QtCore import Qt, QThreadPool, Slot, QPoint, QSize
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
 from typing import cast
@@ -13,7 +13,8 @@ from utils.util import (
     make_repmap,
     get_wireless_interfaces,
     save_ap_location,
-    load
+    load,
+    resource_path,
 )
 
 import sys
@@ -32,7 +33,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.interface_combo.addItems(get_wireless_interfaces())
 
-        self._pixmap = QPixmap()
+        self._floor_layout_pixmap = QPixmap()
+
+        mouse_graphic_pixmap = QPixmap()
+        if not mouse_graphic_pixmap.load(resource_path("media/mouse_right_click.png")):
+            self.mouse_click_graphic.setText("Icon not found")
+            print("Warning: Could not load mouse graphic.")
+        else:
+            self.mouse_click_graphic.setPixmap(
+                mouse_graphic_pixmap.scaled(
+                    QSize(32, 59),
+                    mode=Qt.TransformationMode.SmoothTransformation,
+                )
+            )
+            self.mouse_click_graphic.setAlignment(Qt.AlignmentFlag.AlignRight)
 
         self.floor_layout.right_clicked.connect(self.place_new_ap)
 
@@ -105,8 +119,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         }
 
         self.default_button_style = """
-                    QPushButton          { border: 0; background: transparent; }
-                    QPushButton:hover    { background-color: #2980b9; }
+                    QPushButton          { border: 0; background: rgba(41,128,185,55); }
+                    QPushButton:hover    { background-color: rgba(41,128,185,135); }
                     QPushButton:pressed  { background-color: #21618c; }
                 """
 
@@ -134,11 +148,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.aps: list[AP] = []
 
-
         self.stream = Stream()
-        
+
         self.stream.textWritten.connect(self.updateStatus)
-        
+
         sys.stdout = self.stream
 
         self.populate_from_file()
@@ -148,11 +161,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def updateStatus(self, text):
         stripped = text.strip()
         if stripped and not stripped == "\n":
-            self.statusBar.showMessage(f"Status: {stripped}") #TODO: Shows empty line
+            self.statusBar.showMessage(f"Status: {stripped}")
 
     def closeEvent(self, event):
         self.pool.clear()
-        
+
         sys.stdout = sys.__stdout__
 
         event.accept()
@@ -174,9 +187,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 building=self.building_value, floor=int(self.floor_value)
             )
         )
-        self._pixmap.loadFromData(self.floor_image.getvalue())
+        self._floor_layout_pixmap.loadFromData(self.floor_image.getvalue())
 
-        self.floor_layout.setPixmap(self._pixmap)
+        self.floor_layout.setPixmap(self._floor_layout_pixmap)
 
     def set_buttons_style(self, stylesheet):
         for button in self.buttons.keys():
@@ -255,7 +268,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.aps.append(ap)
 
-        save_ap_location(f"{self.building_value}{self.floor_value}", point.x(), point.y())
+        save_ap_location(
+            f"{self.building_value}{self.floor_value}", point.x(), point.y()
+        )
 
 
 if __name__ == "__main__":

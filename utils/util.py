@@ -36,7 +36,7 @@ measure_headers = [
 
 def make_image(
     replace_map: dict[str, str] = {},
-    template_path: str = "floor_template.svg",
+    template_path: str = "media/floor_template.svg",
 ):
     template = Path(resource_path(template_path)).read_text()
 
