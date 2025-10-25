@@ -16,8 +16,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFormLayout, QFrame,
-    QHBoxLayout, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QSizePolicy, QStatusBar, QWidget)
+    QHBoxLayout, QLabel, QLayout, QLineEdit,
+    QMainWindow, QPushButton, QSizePolicy, QStatusBar,
+    QWidget)
 
 from widgets.busy_spinner import BusySpinner
 from widgets.clickable_label import ClickableLabel
@@ -37,7 +38,12 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.sidebar_view = QFormLayout()
         self.sidebar_view.setObjectName(u"sidebar_view")
-        self.sidebar_view.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
+        self.sidebar_view.setSizeConstraint(QLayout.SizeConstraint.SetDefaultConstraint)
+        self.sidebar_view.setFieldGrowthPolicy(QFormLayout.FieldGrowthPolicy.ExpandingFieldsGrow)
+        self.sidebar_view.setRowWrapPolicy(QFormLayout.RowWrapPolicy.WrapLongRows)
+        self.sidebar_view.setFormAlignment(Qt.AlignmentFlag.AlignLeading|Qt.AlignmentFlag.AlignLeft|Qt.AlignmentFlag.AlignVCenter)
+        self.sidebar_view.setHorizontalSpacing(3)
+        self.sidebar_view.setVerticalSpacing(7)
         self.building_label = QLabel(self.centralwidget)
         self.building_label.setObjectName(u"building_label")
 
@@ -129,6 +135,78 @@ class Ui_MainWindow(object):
 
         self.sidebar_view.setWidget(7, QFormLayout.ItemRole.FieldRole, self.ap_label)
 
+        self.iperf_icon = QLabel(self.centralwidget)
+        self.iperf_icon.setObjectName(u"iperf_icon")
+        self.iperf_icon.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.sidebar_view.setWidget(9, QFormLayout.ItemRole.LabelRole, self.iperf_icon)
+
+        self.iperf_found = QLabel(self.centralwidget)
+        self.iperf_found.setObjectName(u"iperf_found")
+
+        self.sidebar_view.setWidget(9, QFormLayout.ItemRole.FieldRole, self.iperf_found)
+
+        self.ping_icon = QLabel(self.centralwidget)
+        self.ping_icon.setObjectName(u"ping_icon")
+        self.ping_icon.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.sidebar_view.setWidget(10, QFormLayout.ItemRole.LabelRole, self.ping_icon)
+
+        self.ping_found = QLabel(self.centralwidget)
+        self.ping_found.setObjectName(u"ping_found")
+
+        self.sidebar_view.setWidget(10, QFormLayout.ItemRole.FieldRole, self.ping_found)
+
+        self.nmcli_icon = QLabel(self.centralwidget)
+        self.nmcli_icon.setObjectName(u"nmcli_icon")
+        self.nmcli_icon.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.sidebar_view.setWidget(11, QFormLayout.ItemRole.LabelRole, self.nmcli_icon)
+
+        self.nmcli_found = QLabel(self.centralwidget)
+        self.nmcli_found.setObjectName(u"nmcli_found")
+
+        self.sidebar_view.setWidget(11, QFormLayout.ItemRole.FieldRole, self.nmcli_found)
+
+        self.timedatectl_icon = QLabel(self.centralwidget)
+        self.timedatectl_icon.setObjectName(u"timedatectl_icon")
+        self.timedatectl_icon.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.sidebar_view.setWidget(12, QFormLayout.ItemRole.LabelRole, self.timedatectl_icon)
+
+        self.timedatectl_found = QLabel(self.centralwidget)
+        self.timedatectl_found.setObjectName(u"timedatectl_found")
+
+        self.sidebar_view.setWidget(12, QFormLayout.ItemRole.FieldRole, self.timedatectl_found)
+
+        self.tcpdump_icon = QLabel(self.centralwidget)
+        self.tcpdump_icon.setObjectName(u"tcpdump_icon")
+        self.tcpdump_icon.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
+
+        self.sidebar_view.setWidget(13, QFormLayout.ItemRole.LabelRole, self.tcpdump_icon)
+
+        self.tcpdump_found = QLabel(self.centralwidget)
+        self.tcpdump_found.setObjectName(u"tcpdump_found")
+
+        self.sidebar_view.setWidget(13, QFormLayout.ItemRole.FieldRole, self.tcpdump_found)
+
+        self.refresh_deps_button = QPushButton(self.centralwidget)
+        self.refresh_deps_button.setObjectName(u"refresh_deps_button")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.refresh_deps_button.sizePolicy().hasHeightForWidth())
+        self.refresh_deps_button.setSizePolicy(sizePolicy)
+        self.refresh_deps_button.setMinimumSize(QSize(33, 32))
+        self.refresh_deps_button.setMaximumSize(QSize(33, 32))
+        icon1 = QIcon(QIcon.fromTheme(u"view-refresh"))
+        self.refresh_deps_button.setIcon(icon1)
+#if QT_CONFIG(shortcut)
+        self.refresh_deps_button.setShortcut(u"")
+#endif // QT_CONFIG(shortcut)
+
+        self.sidebar_view.setWidget(8, QFormLayout.ItemRole.LabelRole, self.refresh_deps_button)
+
 
         self.horizontalLayout.addLayout(self.sidebar_view)
 
@@ -141,17 +219,17 @@ class Ui_MainWindow(object):
 
         self.floor_view = QWidget(self.centralwidget)
         self.floor_view.setObjectName(u"floor_view")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.floor_view.sizePolicy().hasHeightForWidth())
-        self.floor_view.setSizePolicy(sizePolicy)
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Expanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.floor_view.sizePolicy().hasHeightForWidth())
+        self.floor_view.setSizePolicy(sizePolicy1)
         self.floor_view.setMinimumSize(QSize(1120, 630))
         self.floor_layout = ClickableLabel(self.floor_view)
         self.floor_layout.setObjectName(u"floor_layout")
         self.floor_layout.setGeometry(QRect(0, 0, 1120, 630))
-        sizePolicy.setHeightForWidth(self.floor_layout.sizePolicy().hasHeightForWidth())
-        self.floor_layout.setSizePolicy(sizePolicy)
+        sizePolicy1.setHeightForWidth(self.floor_layout.sizePolicy().hasHeightForWidth())
+        self.floor_layout.setSizePolicy(sizePolicy1)
         self.floor_layout.setPixmap(QPixmap(u"../d6863b01/floor_template.png"))
         self.floor_layout.setScaledContents(True)
         self.floor_layout.setTextInteractionFlags(Qt.TextInteractionFlag.NoTextInteraction)
@@ -344,6 +422,17 @@ class Ui_MainWindow(object):
         self.iperf_port_label.setText(QCoreApplication.translate("MainWindow", u"IPerf3 port", None))
         self.mouse_click_graphic.setText(QCoreApplication.translate("MainWindow", u"*m_graphic*", None))
         self.ap_label.setText(QCoreApplication.translate("MainWindow", u"Place AP", None))
+        self.iperf_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.iperf_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.ping_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.ping_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.nmcli_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.nmcli_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.timedatectl_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.timedatectl_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.tcpdump_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.tcpdump_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.refresh_deps_button.setText("")
         self.floor_layout.setText("")
         self.fl11.setText("")
         self.fl12.setText("")

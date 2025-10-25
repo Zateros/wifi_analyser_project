@@ -1,6 +1,6 @@
 from PySide6.QtCore import Qt, QThreadPool, Slot, QPoint, QSize
-from PySide6.QtGui import QPixmap
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
+from PySide6.QtGui import QPixmap, QIcon
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QStyle
 from typing import cast
 
 from ui.ui_main import Ui_MainWindow
@@ -17,6 +17,7 @@ from utils.util import (
     save_ap_location,
     load,
     resource_path,
+    get_dependencies,
 )
 
 import sys
@@ -152,6 +153,37 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             button.clicked.connect(self.room_button_clicked)
             button.setStyleSheet(self.default_button_style)
 
+        self.found_text = "{0} is available!"
+        self.not_found_text = "{0} is not available!"
+        self.not_found_optional_text = "{0} is not available, but is optional!"
+
+        icon_size = QSize(25, 25)
+        self.iperf_icon.setFixedSize(icon_size)
+        self.timedatectl_icon.setFixedSize(icon_size)
+        self.ping_icon.setFixedSize(icon_size)
+        self.nmcli_icon.setFixedSize(icon_size)
+        self.tcpdump_icon.setFixedSize(icon_size)
+
+        self.available_icon = (
+            self.style()
+            .standardIcon(QStyle.StandardPixmap.SP_DialogApplyButton)
+            .pixmap(icon_size)
+        )
+        self.not_available_icon = (
+            self.style()
+            .standardIcon(QStyle.StandardPixmap.SP_DialogCancelButton)
+            .pixmap(icon_size)
+        )
+        self.optional_icon = (
+            self.style()
+            .standardIcon(QStyle.StandardPixmap.SP_MessageBoxWarning)
+            .pixmap(icon_size)
+        )
+
+        self.refresh_dependencies()
+        self.refresh_deps_button.setIcon(QIcon.fromTheme("view-refresh"))
+        self.refresh_deps_button.clicked.connect(self.refresh_dependencies)
+
         self.aps: list[AP] = []
 
         self.stream = Stream()
@@ -175,6 +207,50 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         sys.stdout = sys.__stdout__
 
         event.accept()
+
+    def refresh_dependencies(self):
+        deps = get_dependencies()
+
+        self.iperf_found.setText(
+            (self.found_text if deps["iperf3"] else self.not_found_text).format(
+                "iperf3"
+            )
+        )
+        self.iperf_icon.setPixmap(
+            self.available_icon if deps["iperf3"] else self.not_available_icon
+        )
+
+        self.timedatectl_found.setText(
+            (
+                self.found_text if deps["timedatectl"] else self.not_found_optional_text
+            ).format("timedatectl")
+        )
+        self.timedatectl_icon.setPixmap(
+            self.available_icon if deps["timedatectl"] else self.optional_icon
+        )
+
+        self.ping_found.setText(
+            (self.found_text if deps["ping"] else self.not_found_text).format("ping")
+        )
+        self.ping_icon.setPixmap(
+            self.available_icon if deps["ping"] else self.not_available_icon
+        )
+
+        self.nmcli_found.setText(
+            (self.found_text if deps["nmcli"] else self.not_found_text).format("nmcli")
+        )
+        self.nmcli_icon.setPixmap(
+            self.available_icon if deps["nmcli"] else self.not_available_icon
+        )
+
+        self.tcpdump_found.setText(
+            (
+                self.found_text if deps["tcpdump"] else self.not_found_optional_text
+            ).format("tcpdump")
+        )
+        self.tcpdump_icon.setPixmap(
+            self.available_icon if deps["tcpdump"] else self.optional_icon
+        )
 
     @Slot(str)
     def on_done(self, msg):
@@ -227,6 +303,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
     def room_button_clicked(self):
         if self.is_running:
+            return
+
+        deps = get_dependencies()
+        if not deps["iperf3"] or not deps["ping"] or not deps["nmcli"]:
+            not_available = list(
+                filter(
+                    lambda x: not (x == "" or x == "timedatectl" or x == "tcpdump"),
+                    [key if not value else "" for key, value in deps.items()],
+                )
+            )
+            print(
+                f"Required {"dependency" if len(not_available) == 1 else "dependencies"} not met: {', '.join(not_available)}"
+            )
             return
 
         sender_button = cast(QPushButton, self.sender())

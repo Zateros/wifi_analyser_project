@@ -37,6 +37,16 @@ measure_headers = [
 ]
 
 
+def get_dependencies():
+    return {
+        "iperf3": which("iperf3") is not None,
+        "timedatectl": which("timedatectl") is not None,
+        "ping": which("ping") is not None,
+        "nmcli": which("nmcli") is not None,
+        "tcpdump": which("tcpdump") is not None,
+    }
+
+
 def make_image(
     replace_map: dict[str, str] = {},
     template_path: str = "media/floor_template.svg",
@@ -86,12 +96,15 @@ def make_repmap(building: str = "A", floor: int = 1):
 
 def get_wireless_interfaces():
     sys_interfaces = []
-    out = subprocess.check_output(["ip", "-o", "addr", "show"]).decode()
-    for m in re.finditer(r"^\d+:\s+(\S+).+inet\s+([0-9.]+)", out, re.M):
-        iface, _ = m.groups()
-        sys_interfaces.append(iface)
-
-    return sys_interfaces
+    try:
+        out = subprocess.check_output(["ip", "-o", "addr", "show"]).decode()
+        for m in re.finditer(r"^\d+:\s+(\S+).+inet\s+([0-9.]+)", out, re.M):
+            iface, _ = m.groups()
+            sys_interfaces.append(iface)
+    except FileNotFoundError:
+        print("Command ip not found, cannot get wireless interfaces.")
+    finally:
+        return sys_interfaces
 
 
 def save_ap_location(location: str = "A1", x: int = 0, y: int = 0):
