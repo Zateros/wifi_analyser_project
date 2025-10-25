@@ -30,6 +30,8 @@ build_and_release_job:
       curl --fail-with-body --header "PRIVATE-TOKEN: $TOKEN"
       --request DELETE "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/tags/release"
       || echo "Tag 'release' not found, proceeding."
-    - release-cli create --name "Continuous Release" --tag-name "release" \
-        --ref "$CI_COMMIT_SHA" \
-        --asset "path=./dist/WifiAnalyser,name=WifiAnalyser"
+    - release-cli create --name "Continuous Release" --tag-name "release" --ref "$CI_COMMIT_SHA" --assets-link "{\"name\":\"WifiAnalyser\",\"url\":\"${CI_PROJECT_URL}/-/jobs/${CI_JOB_ID}/artifacts/raw/dist/WifiAnalyser\"}"
+
+  artifacts:
+    paths:
+      - dist/WifiAnalyser
