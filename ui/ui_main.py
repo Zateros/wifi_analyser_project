@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QComboBox, QFormLayout, QFrame,
     QHBoxLayout, QLabel, QLineEdit, QMainWindow,
-    QPushButton, QSizePolicy, QWidget)
+    QPushButton, QSizePolicy, QStatusBar, QWidget)
 
 from widgets.busy_spinner import BusySpinner
 from widgets.clickable_label import ClickableLabel
@@ -295,6 +295,10 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.floor_view)
 
         MainWindow.setCentralWidget(self.centralwidget)
+        self.statusBar = QStatusBar(MainWindow)
+        self.statusBar.setObjectName(u"statusBar")
+        self.statusBar.setSizeGripEnabled(False)
+        MainWindow.setStatusBar(self.statusBar)
 
         self.retranslateUi(MainWindow)
 

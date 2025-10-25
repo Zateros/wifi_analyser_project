@@ -241,6 +241,8 @@ def measure(args, row, writer, csvfile):
     writer.writerow(row)
     csvfile.flush()
 
+    print("Measurement done")
+
 
 def entry(args):
     global debug

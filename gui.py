@@ -7,12 +7,13 @@ from ui.ui_main import Ui_MainWindow
 from widgets.ap import AP
 from wifi_analyser import entry
 from utils.workers import Worker
+from utils.stream import Stream
 from utils.util import (
     make_image,
     make_repmap,
     get_wireless_interfaces,
     save_ap_location,
-    load,
+    load
 )
 
 import sys
@@ -133,7 +134,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         self.aps: list[AP] = []
 
+
+        self.stream = Stream()
+        
+        self.stream.textWritten.connect(self.updateStatus)
+        
+        sys.stdout = self.stream
+
         self.populate_from_file()
+
+        print("Ready")
+
+    def updateStatus(self, text):
+        stripped = text.strip()
+        if stripped and not stripped == "\n":
+            self.statusBar.showMessage(f"Status: {stripped}") #TODO: Shows empty line
+
+    def closeEvent(self, event):
+        self.pool.clear()
+        
+        sys.stdout = sys.__stdout__
+
+        event.accept()
 
     @Slot(str)
     def on_done(self, msg):
