@@ -1,8 +1,11 @@
 from pathlib import Path
 from cairosvg import svg2png
+from PySide6.QtWidgets import QMainWindow
+from PySide6.QtCore import QPoint, Qt
+from PySide6.QtGui import QPainter, QPixmap, QColor, QPalette
+from shutil import which
+
 from widgets.ap import AP
-from PySide6.QtWidgets import QMainWindow, QWidget
-from PySide6.QtCore import QPoint
 
 import io, sys, os, csv, re, subprocess
 
@@ -107,9 +110,7 @@ def save_ap_location(location: str = "A1", x: int = 0, y: int = 0):
     file.close()
 
 
-def load(
-    window: QMainWindow, location: str = "A1"
-) -> tuple[list[str], list[AP]]:
+def load(window: QMainWindow, location: str = "A1") -> tuple[list[str], list[AP]]:
     done_zones: list[str] = []
     aps: list[AP] = []
 
@@ -135,12 +136,12 @@ def load(
             x: int = int(row["position_x"])
             y: int = int(row["position_y"])
             pir: int = int(row["position_in_room"])
-            
+
             f_or_s = "f" if x <= 4 else "s"
             l_or_r = "l" if y == 0 else "r"
-            
+
             name: str = f"{f_or_s}{l_or_r}{x - 0 if f_or_s == "f" else 4}{pir}"
-            
+
             if name not in done_zones:
                 done_zones.append(name)
 
@@ -151,8 +152,38 @@ def load(
 
 def resource_path(relative_path):
     try:
-        base_path = sys._MEIPASS
+        base_path = sys._MEIPASS  # type: ignore
     except Exception:
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
+
+
+def get_is_dark(app):
+    palette = app.palette()
+    window_color = palette.color(QPalette.ColorRole.Window)
+    dark_theme_enabled = window_color.lightness() < 128
+
+    return dark_theme_enabled
+
+
+def recolor_pixmap(pixmap: QPixmap, is_dark: bool):
+    if is_dark:
+        tint_color = QColor("white")
+    else:
+        tint_color = QColor("black")
+
+    recolored_pixmap = QPixmap(pixmap.size())
+    recolored_pixmap.fill(Qt.GlobalColor.transparent)
+
+    painter = QPainter(recolored_pixmap)
+    painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_Source)
+    painter.drawPixmap(0, 0, pixmap)
+
+    painter.setCompositionMode(
+        QPainter.CompositionMode.CompositionMode_SourceIn
+    )
+    painter.fillRect(recolored_pixmap.rect(), tint_color)
+    painter.end()
+
+    return recolored_pixmap

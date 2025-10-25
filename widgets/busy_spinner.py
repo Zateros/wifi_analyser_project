@@ -20,16 +20,16 @@ class BusySpinner(QWidget):
 
     def paintEvent(self, event):
         p = QPainter(self)
-        p.setRenderHint(QPainter.Antialiasing)
+        p.setRenderHint(QPainter.Antialiasing)  # type: ignore
         p.translate(self.width() / 2, self.height() / 2)
         p.rotate(self._angle)
-        r = min(self.width(), self.height()) / 4
+        r = int(min(self.width(), self.height()) / 4)
         for i in range(12):
             alpha = int(255 * (1 - i / 12))
             c = QColor(self._color)
             c.setAlpha(alpha)
             p.setBrush(c)
-            p.setPen(Qt.NoPen)
+            p.setPen(Qt.NoPen)  # type: ignore
             p.drawEllipse(r, -3, 6, 6)
             p.rotate(30)
 

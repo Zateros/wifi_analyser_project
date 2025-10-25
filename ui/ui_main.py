@@ -120,6 +120,7 @@ class Ui_MainWindow(object):
 
         self.mouse_click_graphic = QLabel(self.centralwidget)
         self.mouse_click_graphic.setObjectName(u"mouse_click_graphic")
+        self.mouse_click_graphic.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
 
         self.sidebar_view.setWidget(7, QFormLayout.ItemRole.LabelRole, self.mouse_click_graphic)
 

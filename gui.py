@@ -11,6 +11,8 @@ from utils.stream import Stream
 from utils.util import (
     make_image,
     make_repmap,
+    recolor_pixmap,
+    get_is_dark,
     get_wireless_interfaces,
     save_ap_location,
     load,
@@ -28,8 +30,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.is_running = False
 
         self.setupUi(self)
-
-        self.setFixedSize(1320, 650)
+        self.setFixedSize(1400, 650)
 
         self.interface_combo.addItems(get_wireless_interfaces())
 
@@ -40,13 +41,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.mouse_click_graphic.setText("Icon not found")
             print("Warning: Could not load mouse graphic.")
         else:
+            mouse_graphic_pixmap = recolor_pixmap(
+                mouse_graphic_pixmap, get_is_dark(app)
+            )
+
+            mouse_graphic_size = QSize(20, 36)
             self.mouse_click_graphic.setPixmap(
                 mouse_graphic_pixmap.scaled(
-                    QSize(32, 59),
+                    mouse_graphic_size,
                     mode=Qt.TransformationMode.SmoothTransformation,
                 )
             )
-            self.mouse_click_graphic.setAlignment(Qt.AlignmentFlag.AlignRight)
+            self.mouse_click_graphic.setFixedSize(mouse_graphic_size)
 
         self.floor_layout.right_clicked.connect(self.place_new_ap)
 
@@ -161,7 +167,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def updateStatus(self, text):
         stripped = text.strip()
         if stripped and not stripped == "\n":
-            self.statusBar.showMessage(f"Status: {stripped}")
+            self.statusBar.showMessage(f"Status: {stripped}")  # type: ignore
 
     def closeEvent(self, event):
         self.pool.clear()

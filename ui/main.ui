@@ -184,6 +184,9 @@
         <property name="text">
          <string>*m_graphic*</string>
         </property>
+        <property name="alignment">
+         <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+        </property>
        </widget>
       </item>
       <item row="7" column="1">
