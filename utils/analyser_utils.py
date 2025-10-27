@@ -1,28 +1,23 @@
-#!/usr/bin/env python3
-
-from utils.util import measure_headers
-import statistics, re, argparse, subprocess, csv, datetime, time, os, json, sys
-
-debug = False
+import statistics, re, subprocess, datetime, os, json
 
 
-def current_time():
+def currentTime():
     return datetime.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S")
 
 
-def run_cmd(cmd, timeout=3):
+def runCMD(cmd, timeout: float | None = 3):
     res = subprocess.run(
-        cmd,
+        cmd,  # type: ignore
         shell=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
         timeout=timeout,
-    )
-    return res.stdout.strip(), res.returncode
+    )  # type: ignore
+    return (res.stdout.strip(), res.returncode)
 
 
-def parse_nmcli(iface):
+def parseNmcli(iface):
     data = {
         "ssid": "",
         "bssid": "",
@@ -34,13 +29,11 @@ def parse_nmcli(iface):
 
     print("Parsing nmcli...")
 
-    out, rc = run_cmd(
+    out, rc = runCMD(
         f"nmcli -t -f IN-USE,SSID,BSSID,FREQ,CHAN,RATE,SIGNAL dev wifi list ifname {iface}",
-        timeout=10,
+        timeout=None,
     )
     if rc != 0 or not out:
-        if debug:
-            print(f"Returned null; out={out}; rc={rc}")
         return data
 
     split_pattern = re.compile(r"(?<!\\):")
@@ -54,13 +47,7 @@ def parse_nmcli(iface):
             continue
 
         in_use, ssid, bssid, freq, chan, rate, signal = parts[:7]
-        if debug:
-            print(
-                f"in_use={in_use}; ssid={ssid}; bssid={bssid}; freq={freq}; chan={chan}; rate={rate}; signal={signal}"
-            )
         if in_use.strip() == "*":
-            if debug:
-                print("is in_use")
             data["ssid"] = ssid.strip()
             data["bssid"] = bssid.strip()
             data["freq_mhz"] = freq.replace(" MHz", "").strip()
@@ -72,22 +59,10 @@ def parse_nmcli(iface):
     return data
 
 
-def measure_latency(target, count=10, timeout=1):
-    """
-    Pings a target multiple times and returns detailed latency metrics.
-    Returns a dict:
-      {
-        'avg_ms': float,
-        'min_ms': float,
-        'max_ms': float,
-        'jitter_ms': float,
-        'loss_pct': float,
-        'success': bool
-      }
-    """
+def measureLatency(target, count=10, timeout=1):
     print("Measuring latency, jitter, packet loss...")
     cmd = f"ping -c {count} -W {timeout} {target}"
-    out, rc = run_cmd(cmd, timeout=count + 5)
+    out, rc = runCMD(cmd, timeout=count + 5)
     if rc != 0 or not out:
         print(f"Latency measure failed: out={out}; rc={rc}")
 
@@ -147,7 +122,7 @@ def measure_latency(target, count=10, timeout=1):
     }
 
 
-def test_speed(server="speedtest.fra1.de.leaseweb.net", port="5201-5210", duration=10):
+def testSpeed(server="speedtest.fra1.de.leaseweb.net", port="5201-5210", duration=10):
 
     print(f"Running iperf3 speed test to {server}...")
 
@@ -159,11 +134,16 @@ def test_speed(server="speedtest.fra1.de.leaseweb.net", port="5201-5210", durati
             "-J",
             "-t",
             str(duration),
-            "-p",
-            port,
             "--connect-timeout",
             "3000",
         ]
+
+        if not port == "":
+            cmd += [
+                "-p",
+                port,
+            ]
+
         if reverse:
             cmd.append("-R")
 
@@ -178,24 +158,21 @@ def test_speed(server="speedtest.fra1.de.leaseweb.net", port="5201-5210", durati
     download = run_iperf3(reverse=True)
     upload = run_iperf3(reverse=False)
 
-    if debug:
-        print(f"→ Download: {download} Mbps | Upload: {upload} Mbps")
-
-    return download, upload
+    return (download, upload)
 
 
-def check_ntp_sync() -> bool:
+def checkNTPSync() -> bool:
     print("Is ntp synced?")
 
-    out, _ = run_cmd("timedatectl show -p NTPSynchronized --value 2>/dev/null")
+    out, _ = runCMD("timedatectl show -p NTPSynchronized --value 2>/dev/null")
     if out.strip().lower() == "yes":
         return True
 
-    out, _ = run_cmd("chronyc tracking | grep 'Leap status' || true")
+    out, _ = runCMD("chronyc tracking | grep 'Leap status' || true")
     if "normal" in out.lower():
         return True
 
-    out, _ = run_cmd("ntpq -p 2>/dev/null | grep '^*' || true")
+    out, _ = runCMD("ntpq -p 2>/dev/null | grep '^*' || true")
     if out.strip():
         return True
 
@@ -208,11 +185,11 @@ def check_ntp_sync() -> bool:
 
 
 def measure(args, row, writer, csvfile):
-    ntp_ok = check_ntp_sync()
-    ts = current_time()
-    wifi = parse_nmcli(args.iface)
-    ping_stats = measure_latency(args.target)
-    (download, upload) = test_speed(server=args.iperf_addr, port=args.iperf_port)
+    ntp_ok = checkNTPSync()
+    ts = currentTime()
+    wifi = parseNmcli(args.iface)
+    ping_stats = measureLatency(args.target)
+    (download, upload) = testSpeed(server=args.iperf_addr, port=args.iperf_port)
 
     row.update(
         {  # pyright: ignore[reportArgumentType, reportCallIssue]
@@ -233,7 +210,6 @@ def measure(args, row, writer, csvfile):
             "ping_success": 1 if ping_stats["success"] else 0,
             "download": download,
             "upload": upload,
-            "pcap_file": args.pcap if args.pcap else "",
             "ntp_synced": "yes" if ntp_ok else "no",
         }
     )
@@ -242,101 +218,3 @@ def measure(args, row, writer, csvfile):
     csvfile.flush()
 
     print("Measurement done")
-
-
-def entry(args):
-    global debug
-
-    p = argparse.ArgumentParser()
-    p.add_argument("--iface", required=True)
-    p.add_argument("--target", default="0.0.0.0")
-    p.add_argument("--iperf_addr", default="speedtest.fra1.de.leaseweb.net")
-    p.add_argument("--iperf_port", default="5201-5210")
-    p.add_argument("--out", default="survey.csv")
-    p.add_argument("--pcap", default=None)
-    p.add_argument(
-        "--interval", type=float, default=1.0, help="seconds between samples"
-    )
-    p.add_argument("--overwrite", action="store_true")
-    p.add_argument("--debug", action="store_true")
-    p.add_argument("--x", default=None)
-    p.add_argument("--y", default=None)
-    p.add_argument("--pir", default=None)
-    args = p.parse_args(args)
-
-    debug = args.debug
-
-    tcpdump_proc = None
-    if args.pcap:
-        print("Starting tcpdump...")
-        tcpdump_proc = subprocess.Popen(
-            ["tcpdump", "-i", args.iface, "-w", args.pcap],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL,
-        )
-
-    first_write = not os.path.exists(args.out) or args.overwrite
-    csvfile = open(args.out, "w" if args.overwrite else "a", newline="")
-    writer = csv.DictWriter(csvfile, fieldnames=measure_headers)
-    if first_write:
-        writer.writeheader()
-        csvfile.flush()
-
-    seq = 0
-
-    if not args.x or not args.y or not args.pir:
-        print("Press Ctrl+C to stop")
-        try:
-            while True:
-                seq += 1
-
-                row = {h: "" for h in measure_headers}
-
-                try:
-                    inp = input(
-                        f"[{seq}] enter position x,y and the position in the room (1 - closest to the window, 2 - middle of the room, 3 - at the door) (or blank to skip): "
-                    )
-                except EOFError:
-                    inp = ""
-                
-                if inp.strip():
-                    try:
-                        x, y, pir = inp.split(",")
-                        row["position_x"] = x.strip()
-                        row["position_y"] = y.strip()
-                        row["position_in_room"] = pir.strip()
-                    except Exception as e:
-                        print(f"ERROR: {e}")
-
-                measure(args, row, writer, csvfile)
-
-                time.sleep(args.interval)
-        except KeyboardInterrupt:
-            print("\nStopping survey...")
-        finally:
-            csvfile.close()
-            if tcpdump_proc:
-                print("Stopping tcpdump...")
-                tcpdump_proc.terminate()
-                tcpdump_proc.wait(timeout=5)
-
-            print("Done.")
-    else:
-        row = {h: "" for h in measure_headers}
-
-        row["position_x"] = args.x
-        row["position_y"] = args.y
-        row["position_in_room"] = args.pir
-
-        measure(args, row, writer, csvfile)
-
-        csvfile.close()
-
-        if tcpdump_proc:
-            print("Stopping tcpdump...")
-            tcpdump_proc.terminate()
-            tcpdump_proc.wait(timeout=5)
-
-
-if __name__ == "__main__":
-    entry(sys.argv[1:])

@@ -20,7 +20,7 @@ build_and_release_job:
     - . venv/bin/activate
     - pip install -r requirements.txt
     - pyside6-uic ui/main.ui -o ui/ui_main.py
-    - pyinstaller --onefile --name "WifiAnalyser" --windowed --add-data "media/floor_template.svg:./media" --add-data "media/mouse_right_click.png:./media" gui.py
+    - pyinstaller --onefile --name "WifiAnalyser" --windowed --add-data "../analyser_server.py:." --add-data "../utils/analyser_utils.py:./utils" --add-data "../utils/literals.py:./utils" --add-data "media/floor_template.svg:./media" --add-data "media/mouse_right_click.png:./media" gui.py
     - curl -sL "https://gitlab.com/api/v4/projects/gitlab-org%2Frelease-cli/releases/permalink/latest/downloads/bin/release-cli-linux-amd64" -o /usr/local/bin/release-cli
     - chmod +x /usr/local/bin/release-cli
     - >

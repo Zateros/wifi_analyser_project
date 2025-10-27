@@ -21,7 +21,7 @@ jobs:
           spec: 'gui.py'
           requirements: 'requirements.txt'
           upload_exe_with_name: 'WifiAnalyser'
-          options: --onefile, --name "WifiAnalyser", --windowed, --add-data "media/floor_template.svg:./media", --add-data "media/mouse_right_click.png:./media"
+          options: --onefile, --name "WifiAnalyser", --windowed, --add-data "../analyser_server.py:.", --add-data "../utils/analyser_utils.py:./utils", --add-data "../utils/literals.py:./utils", --add-data "media/floor_template.svg:./media", --add-data "media/mouse_right_click.png:./media"
       - name: Create Release and Upload Artifact
         uses: softprops/action-gh-release@v1
         id: create_release_upload_artifact

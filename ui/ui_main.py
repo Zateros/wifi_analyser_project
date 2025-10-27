@@ -135,6 +135,23 @@ class Ui_MainWindow(object):
 
         self.sidebar_view.setWidget(7, QFormLayout.ItemRole.FieldRole, self.ap_label)
 
+        self.refresh_deps_button = QPushButton(self.centralwidget)
+        self.refresh_deps_button.setObjectName(u"refresh_deps_button")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.refresh_deps_button.sizePolicy().hasHeightForWidth())
+        self.refresh_deps_button.setSizePolicy(sizePolicy)
+        self.refresh_deps_button.setMinimumSize(QSize(33, 32))
+        self.refresh_deps_button.setMaximumSize(QSize(33, 32))
+        icon1 = QIcon(QIcon.fromTheme(u"view-refresh"))
+        self.refresh_deps_button.setIcon(icon1)
+#if QT_CONFIG(shortcut)
+        self.refresh_deps_button.setShortcut(u"")
+#endif // QT_CONFIG(shortcut)
+
+        self.sidebar_view.setWidget(8, QFormLayout.ItemRole.LabelRole, self.refresh_deps_button)
+
         self.iperf_icon = QLabel(self.centralwidget)
         self.iperf_icon.setObjectName(u"iperf_icon")
         self.iperf_icon.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
@@ -178,34 +195,6 @@ class Ui_MainWindow(object):
         self.timedatectl_found.setObjectName(u"timedatectl_found")
 
         self.sidebar_view.setWidget(12, QFormLayout.ItemRole.FieldRole, self.timedatectl_found)
-
-        self.tcpdump_icon = QLabel(self.centralwidget)
-        self.tcpdump_icon.setObjectName(u"tcpdump_icon")
-        self.tcpdump_icon.setAlignment(Qt.AlignmentFlag.AlignRight|Qt.AlignmentFlag.AlignTrailing|Qt.AlignmentFlag.AlignVCenter)
-
-        self.sidebar_view.setWidget(13, QFormLayout.ItemRole.LabelRole, self.tcpdump_icon)
-
-        self.tcpdump_found = QLabel(self.centralwidget)
-        self.tcpdump_found.setObjectName(u"tcpdump_found")
-
-        self.sidebar_view.setWidget(13, QFormLayout.ItemRole.FieldRole, self.tcpdump_found)
-
-        self.refresh_deps_button = QPushButton(self.centralwidget)
-        self.refresh_deps_button.setObjectName(u"refresh_deps_button")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.refresh_deps_button.sizePolicy().hasHeightForWidth())
-        self.refresh_deps_button.setSizePolicy(sizePolicy)
-        self.refresh_deps_button.setMinimumSize(QSize(33, 32))
-        self.refresh_deps_button.setMaximumSize(QSize(33, 32))
-        icon1 = QIcon(QIcon.fromTheme(u"view-refresh"))
-        self.refresh_deps_button.setIcon(icon1)
-#if QT_CONFIG(shortcut)
-        self.refresh_deps_button.setShortcut(u"")
-#endif // QT_CONFIG(shortcut)
-
-        self.sidebar_view.setWidget(8, QFormLayout.ItemRole.LabelRole, self.refresh_deps_button)
 
 
         self.horizontalLayout.addLayout(self.sidebar_view)
@@ -422,6 +411,7 @@ class Ui_MainWindow(object):
         self.iperf_port_label.setText(QCoreApplication.translate("MainWindow", u"IPerf3 port", None))
         self.mouse_click_graphic.setText(QCoreApplication.translate("MainWindow", u"*m_graphic*", None))
         self.ap_label.setText(QCoreApplication.translate("MainWindow", u"Place AP", None))
+        self.refresh_deps_button.setText("")
         self.iperf_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.iperf_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.ping_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
@@ -430,9 +420,6 @@ class Ui_MainWindow(object):
         self.nmcli_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.timedatectl_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.timedatectl_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.tcpdump_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.tcpdump_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
-        self.refresh_deps_button.setText("")
         self.floor_layout.setText("")
         self.fl11.setText("")
         self.fl12.setText("")

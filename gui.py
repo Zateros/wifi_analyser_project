@@ -5,46 +5,50 @@ from typing import cast
 
 from ui.ui_main import Ui_MainWindow
 from widgets.ap import AP
-from wifi_analyser import entry
 from utils.workers import Worker
 from utils.stream import Stream
+from utils.literals import (
+    PWD,
+    DEFAULT_IPERF_PORT,
+    DEFAULT_IPERF_ADDRESS,
+    DEFAULT_TARGET
+)
 from utils.util import (
-    make_image,
-    make_repmap,
-    recolor_pixmap,
-    get_is_dark,
-    get_wireless_interfaces,
-    save_ap_location,
+    makeBackgroundImage,
+    makeRepmap,
+    rethemePixmap,
+    getIsDark,
+    getWirelessInterfaces,
+    saveAPLocation,
     load,
-    resource_path,
-    get_dependencies,
+    getResourcePath,
+    getDependencies,
 )
 
-import sys
+import sys, json
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        self.pool = QThreadPool.globalInstance()
 
         self.is_running = False
 
         self.setupUi(self)
         self.setFixedSize(1400, 650)
 
-        self.interface_combo.addItems(get_wireless_interfaces())
+        self.interface_combo.addItems(getWirelessInterfaces())
 
         self._floor_layout_pixmap = QPixmap()
 
         mouse_graphic_pixmap = QPixmap()
-        if not mouse_graphic_pixmap.load(resource_path("media/mouse_right_click.png")):
+        if not mouse_graphic_pixmap.load(
+            getResourcePath("media/mouse_right_click.png")
+        ):
             self.mouse_click_graphic.setText("Icon not found")
             print("Warning: Could not load mouse graphic.")
         else:
-            mouse_graphic_pixmap = recolor_pixmap(
-                mouse_graphic_pixmap, get_is_dark(app)
-            )
+            mouse_graphic_pixmap = rethemePixmap(mouse_graphic_pixmap, getIsDark(app))
 
             mouse_graphic_size = QSize(20, 36)
             self.mouse_click_graphic.setPixmap(
@@ -55,24 +59,26 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             )
             self.mouse_click_graphic.setFixedSize(mouse_graphic_size)
 
-        self.floor_layout.right_clicked.connect(self.place_new_ap)
+        self.floor_layout.right_clicked.connect(self.placeNewAP)
 
         self.last_clicked_button: QPushButton
+
+        self.repmap = {}
 
         self.building_value = "A"
         self.floor_value = "1"
 
+        self.ping_target.setText(DEFAULT_TARGET)
+        self.iperf_addr.setText(DEFAULT_IPERF_ADDRESS)
+        self.iperf_port.setText(DEFAULT_IPERF_PORT)
+
         self.building_combo.setCurrentText(self.building_value)
         self.floor_combo.setCurrentText(self.floor_value)
 
-        self.building_combo.currentTextChanged.connect(self.floor_or_building_changed)
-        self.floor_combo.currentTextChanged.connect(self.floor_or_building_changed)
+        self.building_combo.currentTextChanged.connect(self.floorOrBuildingChanged)
+        self.floor_combo.currentTextChanged.connect(self.floorOrBuildingChanged)
 
-        self.set_background_values()
-
-        self.ping_target.setText("1.1.1.1")
-        self.iperf_addr.setText("speedtest.fra1.de.leaseweb.net")
-        self.iperf_port.setText("5201-5210")
+        self.generateBackground()
 
         self.buttons = {
             self.fl11: False,
@@ -150,7 +156,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 """
 
         for button in self.buttons:
-            button.clicked.connect(self.room_button_clicked)
+            button.clicked.connect(self.roomPartitionClicked)
             button.setStyleSheet(self.default_button_style)
 
         self.found_text = "{0} is available!"
@@ -162,7 +168,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.timedatectl_icon.setFixedSize(icon_size)
         self.ping_icon.setFixedSize(icon_size)
         self.nmcli_icon.setFixedSize(icon_size)
-        self.tcpdump_icon.setFixedSize(icon_size)
 
         self.available_icon = (
             self.style()
@@ -180,9 +185,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             .pixmap(icon_size)
         )
 
-        self.refresh_dependencies()
+        self.refreshDependencies()
         self.refresh_deps_button.setIcon(QIcon.fromTheme("view-refresh"))
-        self.refresh_deps_button.clicked.connect(self.refresh_dependencies)
+        self.refresh_deps_button.clicked.connect(self.refreshDependencies)
 
         self.aps: list[AP] = []
 
@@ -192,7 +197,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         sys.stdout = self.stream
 
-        self.populate_from_file()
+        self.populateFromFile()
+
+        self.worker = Worker()
+
+        self.worker.signals.connected.connect(self.updateWorkerArgs)
+
+        self.iperf_addr.textChanged.connect(self.updateWorkerArgs)
+        self.iperf_port.textChanged.connect(self.updateWorkerArgs)
+        self.ping_target.textChanged.connect(self.updateWorkerArgs)
+        self.interface_combo.currentTextChanged.connect(self.updateWorkerArgs)
+
+        self.worker.signals.finished.connect(self.onMeasurementFinish)
+        self.worker.signals.command_error.connect(self.onError)
 
         print("Ready")
 
@@ -202,14 +219,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.statusBar.showMessage(f"Status: {stripped}")  # type: ignore
 
     def closeEvent(self, event):
-        self.pool.clear()
+        self.worker.stop()
+
+        self.onStop()
 
         sys.stdout = sys.__stdout__
 
         event.accept()
 
-    def refresh_dependencies(self):
-        deps = get_dependencies()
+    def updateWorkerArgs(self):
+        options = {
+            "iperf_addr": self.iperf_addr.text(),
+            "iperf_port": self.iperf_port.text(),
+            "iface": self.interface_combo.currentText(),
+            "target": self.ping_target.text(),
+            "out": f"{self.building_value.lower()}{self.floor_value}_measure.csv",
+            "pwd": PWD,
+        }
+
+        self.worker.send_command(f"CHANGE {json.dumps(options)}")
+
+    def refreshDependencies(self):
+        deps = getDependencies()
 
         self.iperf_found.setText(
             (self.found_text if deps["iperf3"] else self.not_found_text).format(
@@ -243,45 +274,48 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.available_icon if deps["nmcli"] else self.not_available_icon
         )
 
-        self.tcpdump_found.setText(
-            (
-                self.found_text if deps["tcpdump"] else self.not_found_optional_text
-            ).format("tcpdump")
-        )
-        self.tcpdump_icon.setPixmap(
-            self.available_icon if deps["tcpdump"] else self.optional_icon
-        )
+    @Slot()
+    def onMeasurementFinish(self):
+        self.last_clicked_button.setStyleSheet(self.completed_button_style)
+        self.buttons[self.last_clicked_button] = True
+        self.onStop()
 
-    @Slot(str)
-    def on_done(self, msg):
-        if msg == "done":
-            self.last_clicked_button.setStyleSheet(self.completed_button_style)
-            self.buttons[self.last_clicked_button] = True
-        else:
-            self.last_clicked_button.setStyleSheet(self.errored_button_style)
-            self.buttons[self.last_clicked_button] = False
+        print("Measurement finished succesfully!")
+
+    @Slot()
+    def onError(self, error):
+        if error["command"] == "START_MEASUREMENT":
+            self.onMeasurementError()
+        self.onStop()
+
+        print(f"Error running command {error["command"]}: {error["error"]}")
+
+    def onMeasurementError(self):
+        self.last_clicked_button.setStyleSheet(self.errored_button_style)
+        self.buttons[self.last_clicked_button] = False
+
+    def onStop(self):
         self.busy_spinner.stop()
         self.is_running = False
 
-    def set_background_values(self):
-        self.floor_image = make_image(
-            replace_map=make_repmap(
-                building=self.building_value, floor=int(self.floor_value)
-            )
+    def generateBackground(self):
+        self.repmap = makeRepmap(
+            building=self.building_value, floor=int(self.floor_value)
         )
+        self.floor_image = makeBackgroundImage(replace_map=self.repmap)
         self._floor_layout_pixmap.loadFromData(self.floor_image.getvalue())
 
         self.floor_layout.setPixmap(self._floor_layout_pixmap)
 
-    def set_buttons_style(self, stylesheet):
+    def setButtonsStyle(self, stylesheet):
         for button in self.buttons.keys():
             button.setStyleSheet(stylesheet)
 
-    def reset_buttons(self):
+    def resetParitionState(self):
         for button in self.buttons.keys():
             self.buttons[button] = False
 
-    def populate_from_file(self):
+    def populateFromFile(self):
         (done, self.aps) = load(self, self.building_value + self.floor_value)
 
         for button in self.buttons.keys():
@@ -289,27 +323,28 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 button.setStyleSheet(self.completed_button_style)
                 self.buttons[button] = True
 
-    def floor_or_building_changed(self, text):
+    def floorOrBuildingChanged(self, text):
         self.building_value = self.building_combo.currentText()
         self.floor_value = self.floor_combo.currentText()
 
-        self.set_background_values()
-        self.set_buttons_style(self.default_button_style)
+        self.generateBackground()
+        self.setButtonsStyle(self.default_button_style)
 
         for ap in self.aps:
             ap.deleteLater()
 
-        self.populate_from_file()
+        self.populateFromFile()
+        self.updateWorkerArgs()
 
-    def room_button_clicked(self):
+    def roomPartitionClicked(self):
         if self.is_running:
             return
 
-        deps = get_dependencies()
+        deps = getDependencies()
         if not deps["iperf3"] or not deps["ping"] or not deps["nmcli"]:
             not_available = list(
                 filter(
-                    lambda x: not (x == "" or x == "timedatectl" or x == "tcpdump"),
+                    lambda x: not (x == "" or x == "timedatectl"),
                     [key if not value else "" for key, value in deps.items()],
                 )
             )
@@ -333,39 +368,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             x = int(name[2]) + (0 if name[0] == "f" else 4)
             y = 0 if name[1] == "l" else 1
             pir = int(name[3])
-            args = [
-                "--iface",
-                self.interface_combo.currentText(),
-                "--target",
-                self.ping_target.text(),
-                "--iperf_addr",
-                self.iperf_addr.text(),
-                "--iperf_port",
-                self.iperf_port.text(),
-                "--out",
-                f"{self.building_value.lower()}{self.floor_value}_measure.csv",
-                "--x",
-                f"{x}",
-                "--y",
-                f"{y}",
-                "--pir",
-                f"{pir}",
-            ]
 
-            worker = Worker(func=entry, args=args)
-            worker.signals.finished.connect(self.on_done)
-            self.pool.start(worker)
+            self.worker.send_command(f"START_MEASUREMENT {x},{y},{pir}")
             self.is_running = True
+            print(f"Started measurements for {self.repmap[name[0:-1]]} ({pir})")
 
-    def place_new_ap(self, x, y):
+    def placeNewAP(self, x, y):
         point = self.floor_layout.mapToGlobal(QPoint(x, y))
         ap = AP(self, point)
 
         self.aps.append(ap)
 
-        save_ap_location(
-            f"{self.building_value}{self.floor_value}", point.x(), point.y()
-        )
+        saveAPLocation(f"{self.building_value}{self.floor_value}", point.x(), point.y())
 
 
 if __name__ == "__main__":

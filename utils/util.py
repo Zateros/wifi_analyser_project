@@ -6,52 +6,25 @@ from PySide6.QtGui import QPainter, QPixmap, QColor, QPalette
 from shutil import which
 
 from widgets.ap import AP
+from utils.literals import APS_FILE, APS_HEADERS
 
 import io, sys, os, csv, re, subprocess
 
-aps_file: str = "ap_locations.csv"
-aps_headers = ["floor", "x", "y"]
-measure_headers = [
-    "timestamp",
-    "iface",
-    "ssid",
-    "bssid",
-    "freq_mhz",
-    "channel",
-    "signal_dbm",
-    "tx_bitrate_mbps",
-    "ping_target",
-    "ping_avg_ms",
-    "ping_min_ms",
-    "ping_max_ms",
-    "ping_jitter_ms",
-    "ping_loss_pct",
-    "ping_success",
-    "download",
-    "upload",
-    "position_x",
-    "position_y",
-    "position_in_room",
-    "pcap_file",
-    "ntp_synced",
-]
 
-
-def get_dependencies():
+def getDependencies():
     return {
         "iperf3": which("iperf3") is not None,
         "timedatectl": which("timedatectl") is not None,
         "ping": which("ping") is not None,
         "nmcli": which("nmcli") is not None,
-        "tcpdump": which("tcpdump") is not None,
     }
 
 
-def make_image(
+def makeBackgroundImage(
     replace_map: dict[str, str] = {},
     template_path: str = "media/floor_template.svg",
 ):
-    template = Path(resource_path(template_path)).read_text()
+    template = Path(getResourcePath(template_path)).read_text()
 
     for key, value in replace_map.items():
         template = template.replace(f"{{{key}}}", value)
@@ -66,7 +39,7 @@ def make_image(
     return image
 
 
-def make_repmap(building: str = "A", floor: int = 1):
+def makeRepmap(building: str = "A", floor: int = 1):
     replace_map = {}
 
     building = f"{building}{str(floor)}".upper()
@@ -94,7 +67,7 @@ def make_repmap(building: str = "A", floor: int = 1):
     return replace_map
 
 
-def get_wireless_interfaces():
+def getWirelessInterfaces():
     sys_interfaces = []
     try:
         out = subprocess.check_output(["ip", "-o", "addr", "show"]).decode()
@@ -107,11 +80,11 @@ def get_wireless_interfaces():
         return sys_interfaces
 
 
-def save_ap_location(location: str = "A1", x: int = 0, y: int = 0):
-    already_exists: bool = os.path.exists(aps_file)
+def saveAPLocation(location: str = "A1", x: int = 0, y: int = 0):
+    already_exists: bool = os.path.exists(APS_FILE)
 
-    file = open(aps_file, "a", encoding="utf-8")
-    writer = csv.DictWriter(file, fieldnames=aps_headers)
+    file = open(APS_FILE, "a", encoding="utf-8")
+    writer = csv.DictWriter(file, fieldnames=APS_HEADERS)
     if not already_exists:
         writer.writeheader()
         file.flush()
@@ -129,9 +102,9 @@ def load(window: QMainWindow, location: str = "A1") -> tuple[list[str], list[AP]
 
     floor_measure = f"{location.lower()}_measure.csv"
 
-    if os.path.exists(aps_file):
-        file = open(aps_file, "r")
-        reader = csv.DictReader(file, fieldnames=aps_headers)
+    if os.path.exists(APS_FILE):
+        file = open(APS_FILE, "r")
+        reader = csv.DictReader(file, fieldnames=APS_HEADERS)
         for row in reader:
             if row["floor"] == location:
                 aps.append(
@@ -163,7 +136,7 @@ def load(window: QMainWindow, location: str = "A1") -> tuple[list[str], list[AP]
     return (done_zones, aps)
 
 
-def resource_path(relative_path):
+def getResourcePath(relative_path):
     try:
         base_path = sys._MEIPASS  # type: ignore
     except Exception:
@@ -172,7 +145,7 @@ def resource_path(relative_path):
     return os.path.join(base_path, relative_path)
 
 
-def get_is_dark(app):
+def getIsDark(app):
     palette = app.palette()
     window_color = palette.color(QPalette.ColorRole.Window)
     dark_theme_enabled = window_color.lightness() < 128
@@ -180,7 +153,7 @@ def get_is_dark(app):
     return dark_theme_enabled
 
 
-def recolor_pixmap(pixmap: QPixmap, is_dark: bool):
+def rethemePixmap(pixmap: QPixmap, is_dark: bool):
     if is_dark:
         tint_color = QColor("white")
     else:
@@ -193,9 +166,7 @@ def recolor_pixmap(pixmap: QPixmap, is_dark: bool):
     painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_Source)
     painter.drawPixmap(0, 0, pixmap)
 
-    painter.setCompositionMode(
-        QPainter.CompositionMode.CompositionMode_SourceIn
-    )
+    painter.setCompositionMode(QPainter.CompositionMode.CompositionMode_SourceIn)
     painter.fillRect(recolored_pixmap.rect(), tint_color)
     painter.end()
 
