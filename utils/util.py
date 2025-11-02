@@ -17,6 +17,7 @@ def getDependencies():
         "timedatectl": which("timedatectl") is not None,
         "ping": which("ping") is not None,
         "nmcli": which("nmcli") is not None,
+        "arp-scan": which("arp-scan") is not None
     }
 
 
@@ -78,6 +79,7 @@ def getWirelessInterfaces():
         print("Command ip not found, cannot get wireless interfaces.")
     finally:
         return sys_interfaces
+
 
 
 def saveAPLocation(location: str = "A1", x: int = 0, y: int = 0):

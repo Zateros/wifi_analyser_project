@@ -168,6 +168,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.timedatectl_icon.setFixedSize(icon_size)
         self.ping_icon.setFixedSize(icon_size)
         self.nmcli_icon.setFixedSize(icon_size)
+        self.arp_icon.setFixedSize(icon_size)
 
         self.available_icon = (
             self.style()
@@ -272,6 +273,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         )
         self.nmcli_icon.setPixmap(
             self.available_icon if deps["nmcli"] else self.not_available_icon
+        )
+
+        self.arp_found.setText(
+            (self.found_text if deps["arp-scan"] else self.not_found_text).format("arp-scan")
+        )
+        self.arp_icon.setPixmap(
+            self.available_icon if deps["arp-scan"] else self.not_available_icon
         )
 
     @Slot()

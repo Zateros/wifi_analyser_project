@@ -25,6 +25,7 @@ MEASURE_HEADERS = [
     "position_y",
     "position_in_room",
     "ntp_synced",
+    "num_of_connected_devices"
 ]
 
 APS_FILE: str = os.path.join(PWD, "ap_locations.csv")

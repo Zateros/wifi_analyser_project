@@ -12,13 +12,13 @@ RUN apt update -y &&    \
     apt install -y      \
     iproute2            \
     iputils-ping        \
-    tcpdump             \
     network-manager     \
     iperf3              \
     libsdl3-0           \
     libsdl2-2.0-0       \
     libwayland-dev      \
-    libnss3
+    libnss3             \
+    arp-scan
 
 
 RUN pip install         \

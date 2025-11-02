@@ -4,7 +4,6 @@ import statistics, re, subprocess, datetime, os, json
 def currentTime():
     return datetime.datetime.now().astimezone().strftime("%Y-%m-%d %H:%M:%S")
 
-
 def runCMD(cmd, timeout: float | None = 3):
     res = subprocess.run(
         cmd,  # type: ignore
@@ -15,7 +14,6 @@ def runCMD(cmd, timeout: float | None = 3):
         timeout=timeout,
     )  # type: ignore
     return (res.stdout.strip(), res.returncode)
-
 
 def parseNmcli(iface):
     data = {
@@ -58,6 +56,31 @@ def parseNmcli(iface):
 
     return data
 
+def getInetAndSubnet(iface):
+    inet = ""
+    subnet = 0
+    try:
+        out = subprocess.check_output(["ip", "addr", "show", iface]).decode()
+        regex = re.compile(r"inet\s+([0-9.]+)\/([0-9]+)", re.M)
+        match = regex.match(out)
+        if match is not None: (inet, subnet) = match.groups()
+    except FileNotFoundError:
+        print("Command ip not found, cannot get wireless interfaces.")
+    finally:
+        return (inet, subnet)
+
+def getArpDevicesCount(iface):
+    print("Getting the number of connected devices...")
+    (inet, subnet) = getInetAndSubnet(iface)
+    inet = re.sub(r'^((?:\d{1,3}\.){3})\d{1,3}$', r'\g<1>0', inet)
+    cmd = f"arp-scan -x {inet}/{subnet}"
+    out, rc = runCMD(cmd=cmd, timeout=15)
+    if rc != 0 or not out:
+        print("Failed to get devices via arp-scan!")
+
+        return -1
+    count = len(out.split("\n"))
+    return count
 
 def measureLatency(target, count=10, timeout=1):
     print("Measuring latency, jitter, packet loss...")
@@ -121,7 +144,6 @@ def measureLatency(target, count=10, timeout=1):
         "success": success,
     }
 
-
 def testSpeed(server="speedtest.fra1.de.leaseweb.net", port="5201-5210", duration=10):
 
     print(f"Running iperf3 speed test to {server}...")
@@ -160,7 +182,6 @@ def testSpeed(server="speedtest.fra1.de.leaseweb.net", port="5201-5210", duratio
 
     return (download, upload)
 
-
 def checkNTPSync() -> bool:
     print("Is ntp synced?")
 
@@ -183,11 +204,11 @@ def checkNTPSync() -> bool:
 
     return False
 
-
 def measure(args, row, writer, csvfile):
     ntp_ok = checkNTPSync()
     ts = currentTime()
     wifi = parseNmcli(args.iface)
+    device_count = getArpDevicesCount(args.iface)
     ping_stats = measureLatency(args.target)
     (download, upload) = testSpeed(server=args.iperf_addr, port=args.iperf_port)
 
@@ -211,6 +232,7 @@ def measure(args, row, writer, csvfile):
             "download": download,
             "upload": upload,
             "ntp_synced": "yes" if ntp_ok else "no",
+            "num_of_connected_devices": device_count
         }
     )
 

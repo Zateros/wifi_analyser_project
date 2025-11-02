@@ -196,6 +196,16 @@ class Ui_MainWindow(object):
 
         self.sidebar_view.setWidget(12, QFormLayout.ItemRole.FieldRole, self.timedatectl_found)
 
+        self.arp_icon = QLabel(self.centralwidget)
+        self.arp_icon.setObjectName(u"arp_icon")
+
+        self.sidebar_view.setWidget(13, QFormLayout.ItemRole.LabelRole, self.arp_icon)
+
+        self.arp_found = QLabel(self.centralwidget)
+        self.arp_found.setObjectName(u"arp_found")
+
+        self.sidebar_view.setWidget(13, QFormLayout.ItemRole.FieldRole, self.arp_found)
+
 
         self.horizontalLayout.addLayout(self.sidebar_view)
 
@@ -420,6 +430,8 @@ class Ui_MainWindow(object):
         self.nmcli_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.timedatectl_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.timedatectl_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.arp_icon.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
+        self.arp_found.setText(QCoreApplication.translate("MainWindow", u"TextLabel", None))
         self.floor_layout.setText("")
         self.fl11.setText("")
         self.fl12.setText("")
