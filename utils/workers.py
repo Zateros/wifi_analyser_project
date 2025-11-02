@@ -1,3 +1,4 @@
+from shutil import which
 from PySide6.QtCore import QObject, Signal, Slot, QThread
 from utils.util import getResourcePath
 from utils.literals import SOCKET_PATH
@@ -23,9 +24,10 @@ class Worker(QObject):
     @Slot()
     def start_worker_server(self):
         try:
+            pkexec_available = which("pkexec") is not None
             self.process = subprocess.Popen(
                 [
-                    "pkexec",
+                    "pkexec" if pkexec_available else "sudo",
                     "/usr/bin/env",
                     "python3",
                     getResourcePath("analyser_server.py"),
@@ -56,7 +58,7 @@ class Worker(QObject):
                 break
             except (ConnectionRefusedError, FileNotFoundError):
                 print(f"Waiting for worker socket... (attempt {i+1})")
-                time.sleep(5)
+                time.sleep(2)
         else:
             print("Error: Could not connect to worker socket.")
             self.signals.connection_error.emit(
